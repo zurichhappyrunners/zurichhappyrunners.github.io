@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Zürich Happy Runners</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/animate.css" rel="stylesheet" />
+    <!-- Squad theme CSS -->
+    <link href="css/style.css" rel="stylesheet">
+	<link href="color/default.css" rel="stylesheet">
+
+	<script type="text/javascript">
+
+	function fill_table(data)
+	{
+		var table = document.getElementById("displayTable");
+        var allRows = data.split(/\r?\n|\r/);
+        var N = allRows.length;
+        
+		for (var ii = 1; ii < N-1; ii++)
+		{
+	        var allElem = allRows[ii].split(",");
+		    var row = table.insertRow();
+		    var cell = row.insertCell();
+		    cell.innerHTML = parseInt(ii);
+		    var cell = row.insertCell();
+		    cell.innerHTML = allElem[0].substring(1,allElem[0].length-1);
+		    var cell = row.insertCell();
+		    cell.innerHTML = parseInt(allElem[1]);
+		}
+	}
+
+	function fill_table_from_CSV(file)
+	{
+	    var rawFile = new XMLHttpRequest();
+	    rawFile.open("GET", file, true);
+	    rawFile.onreadystatechange = function ()
+	    {
+	        if(rawFile.readyState === 4)
+	        {
+	            if(rawFile.status === 200 || rawFile.status == 0)
+	            {
+	                fill_table(rawFile.responseText)
+	            }
+	        }
+	    }
+	    rawFile.send(null);
+	}
+
+	function loadTable(date)
+	{
+		// Show the updated date
+		date_parts = date.split('-')
+		var d = new Date("20"+date_parts[2], parseInt(date_parts[0])-1, date_parts[1])
+		document.getElementById("dateupdated").innerHTML = d.toDateString();
+
+
+		// Read CSV and fill in the table
+		fill_table_from_CSV("csv_data/Zurich-Happy-Runners_Member_List_on_"+date+".csv")	
+	}
+
+
+	</script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" onload="loadTable('11-19-16')">
+	<!-- Preloader -->
+	<div id="preloader">
+	  <div id="load"></div>
+	</div>
+
+	<!-- Section: intro -->
+    <section id="intro" class="intro">
+		<div class="slogan">
+			<img style="width: 90%;height:auto; margin-bottom: 20px" src="img/zhr/BannerWeb.png" alt="" />
+			<h4 style="margin-left:10%;margin-right:10%">WE ARE GROUP OF FRIENDLY RUNNERS OF ALL LEVELS WHO GATHER FOR FUN</h4>
+		</div>
+		<div class="page-scroll">
+			<a href="#about" class="btn btn-circle">
+				<i style="padding-bottom:20px" class="fa fa-angle-double-down animated"></i>
+			</a>
+		</div>
+    </section>
+	<!-- /Section: intro -->
+
+
+
+
+	<!-- Section: about -->
+    <section id="about" class="home-section text-center">
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow bounceInDown" data-wow-delay="0.4s">
+					<div class="section-heading">
+					<h2>Organizer Team</h2>
+					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
+
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="0.2s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Jordi</h5>
+                        <p class="subtitle">Give me trails!</p>
+                        <div class="avatar"><img src="img/team/Jordi.png" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="0.5s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Mireia</h5>
+                        <p class="subtitle">Orienteering is fun!</p>
+                        <div class="avatar"><img src="img/team/Mireia.png" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="0.8s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Tijana</h5>
+                        <p class="subtitle">Bike, ski, run, you name it!</p>
+                        <div class="avatar"><img src="img/team/Tijana.png" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="1s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Alex</h5>
+                        <p class="subtitle">Let's do some abs!</p>
+                        <div class="avatar"><img src="img/team/Alex.jpeg" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: about -->
+
+
+	<!-- Section: table -->
+    <section id="table" class="home-section text-center bg-gray">
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
+					<div class="section-heading">
+					<h2>Hall of Fame</h2>
+					Our most committed members (Updated <span id=dateupdated></span>)
+					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+        <center>
+            <table id="displayTable" style="width:50%; text-align: center">
+			  <tr>
+			    <th style="text-align: center">Ranking Position</th>
+			    <th style="text-align: center">Meetup Username</th> 
+			    <th style="text-align: center">Runs Attended</th>
+			  </tr>
+			</table>
+		</center>
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: table -->
+
+	<footer>
+		<div id="footer" class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+				    <p>You can find everything about us in <a style="color: #FFFFFF;" href="http://www.meetup.com/Zurich-Happy-Runners/" target="_blank">Meetup</a></p>
+					<div class="wow shake" data-wow-delay="0.4s">
+					<div class="page-scroll marginbot-30">
+						<a href="#intro" id="totop" class="btn btn-circle">
+							<i class="fa fa-angle-double-up animated"></i>
+						</a>
+					</div>
+					</div>
+					<p>&copy;Copyright 2016 - Zürich Happy Runners. All rights reserved.</p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+
+
+
+
+
+
+    <!-- Core JavaScript Files -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>	
+	<script src="js/jquery.scrollTo.js"></script>
+	<script src="js/wow.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
