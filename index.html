@@ -72,6 +72,13 @@
 
 	</script>
 
+
+    <style>
+       #map {
+        height: 600px;
+        width: 100%;
+       }
+    </style>
 </head>
 
 <body id="page-top" data-spy="scroll" onload="loadTable('11-19-16')">
@@ -172,8 +179,39 @@
 	<!-- /Section: about -->
 
 
+
+	<!-- Section: map -->
+    <section class="home-section text-center bg-gray">
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
+					<div class="section-heading">
+					<h2>Where do we Meet?</h2>
+					Usual locations around Zürich where we start our runs
+					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-2 col-lg-offset-5">
+					<hr class="marginbot-50">
+				</div>
+			</div>
+		</div>
+    	<div id="map"></div>
+	</section>
+	<!-- Section: map -->
+
+
+
 	<!-- Section: table -->
-    <section id="table" class="home-section text-center bg-gray">
+    <section id="table" class="home-section text-center">
 		<div class="heading-about">
 			<div class="container">
 			<div class="row">
@@ -231,6 +269,34 @@
 
 
 
+	<script>
+
+	var markers = [{lat: 47.411571, lng: 8.544611},
+	               {lat: 47.357295, lng: 8.522394},
+	               {lat: 47.376827, lng: 8.546548},
+	               {lat: 47.378096, lng: 8.539996},
+	               {lat: 47.399398, lng: 8.492994},
+	               {lat: 47.397780, lng: 8.542004}]
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 47.384236, lng: 8.540092}
+        });
+		for (var ii = 0; ii < markers.length; ii++)
+		{
+	        new google.maps.Marker({
+    	      position: markers[ii],
+        	  map: map
+        	});
+	    }
+      }
+    </script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjMpHw_ti_9Sl2CWYZ3erNR-26FxEu74c&callback=initMap">
+    </script>
 
 
     <!-- Core JavaScript Files -->
