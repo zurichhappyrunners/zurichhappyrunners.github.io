@@ -302,10 +302,17 @@ hr {
 ============================ */
 
 .intro {
-	width:100%;
-	position:relative;
+	/*width:100%;*/
+	/*position:relative;*/
 	
-	background: url(../img/bg1.jpg) no-repeat top center;
+  height: 100%;
+  padding: 0;
+  
+	background: url(../img/bg1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #intro.intro {
@@ -314,7 +321,6 @@ hr {
 
 .intro .slogan {
 	text-align: center;
-
 }
 
 .intro .page-scroll {
@@ -736,11 +742,6 @@ Parallax
         border-bottom: 1px solid rgba(255,255,255,.3);
     }
 	
-    .intro {
-        height: 100%;
-        padding: 0;
-    }
-
     .brand-heading {
         font-size: 100px;
     }
