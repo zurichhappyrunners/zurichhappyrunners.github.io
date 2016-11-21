@@ -721,6 +721,22 @@ Parallax
 
 /* Media queries */
 
+
+@media(min-width:800px) {
+
+  #displayTable{
+      width:60%; 
+  }
+}
+
+
+@media(max-width:799px) {
+
+  #displayTable{
+      width:100%; 
+  }
+}
+
 @media(min-width:767px) {
 
     .navbar {
