@@ -309,9 +309,11 @@ hr {
   padding: 0;
   
 	background: url(../img/bg1.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -427,98 +429,6 @@ hr {
 .team-social .social-vimeo a:hover{background: #71c6f3;}
 
 
-/* ===========================
---- Services
-============================ */
-
-.service-icon {
-	margin-bottom: 20px;
-}	
-
-
-
-/* ===========================
---- Contact
-============================ */
-
-form#contact-form .form-group label {
-	text-align: left !important;
-	display: block;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-size: 12px;
-}
-form#contact-form input,form#contact-form select,form#contact-form textarea {
-	border-radius: 0;
-	border: 1px solid #eee;
-  -webkit-box-shadow: none;
-          box-shadow:  none;
-}
-
-form#contact-form input:focus,form#contact-form select:focus,form#contact-form textarea:focus {
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-          box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-}
-.input-group-addon {
-  background-color: #fefefe;
-  border: 1px solid #eee;
-  border-radius: 0;
-}
-
-.widget-contact {
-	text-align: left;
-}
-
-
-.company-social {
-	margin-left: 0;
-	padding-left: 0;
-	margin-top: 10px;
-}
-
-.company-social {
-	text-align: left;
-}
-
-.company-social li{
-    display: inline-block;
-	margin:0 !important;
-	padding:0;
-}
-
-
-.company-social a{
-	margin:0;
-	padding:0;
-    display: block;
-	width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background: #3bbec0;
-	color: #fff;
-    -webkit-transition: background .3s ease-in-out;
-    transition: background .3s ease-in-out;
-}
-.company-social a i{
-	text-align: center;
-	margin:0;
-	padding:0;
-}
-.company-social .social-facebook a{background: #3873ae;}
-.company-social .social-twitter a{background: #62c6f8;}
-.company-social .social-dribble a{background: #d74980;}
-.company-social .social-deviantart a{background: #8da356;}
-.company-social .social-google a{background: #000;}
-.company-social .social-vimeo a{background: #51a6d3;}
-.company-social .social-facebook a:hover{background: #4893ce;}
-.company-social .social-twitter a:hover{background: #82e6ff;}
-.company-social .social-dribble a:hover{background: #f769a0;}
-.company-social .social-deviantart a:hover{background: #adc376;}
-.company-social .social-google a:hover{background: #333;}
-.company-social .social-vimeo a:hover{background: #71c6f3;}
-
-
 
 /* ===========================
 --- Footer
@@ -534,43 +444,6 @@ footer p {
 	color: #f8f8f8;
 }
 
-/* ==========================
-Parallax
-============================= */
-
-#parallax1{	
-	background-image: url(../img/parallax/1.jpg);
-}
-
-#parallax1:after {	
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC);
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	top: 0;
-	opacity: 0.7;
-	z-index: -1;
-}
-
-
-#parallax2{	
-	background-image: url(../img/parallax/2.jpg);
-
-}
-
-#parallax2:after  {	
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC);
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	top: 0;
-	opacity: 0.7;
-	z-index: -1;
-}
 
 
 /* ===========================
@@ -720,8 +593,6 @@ Parallax
 
 
 /* Media queries */
-
-
 @media(min-width:800px) {
 
   #displayTable{
@@ -735,75 +606,4 @@ Parallax
   #displayTable{
       width:100%; 
   }
-}
-
-@media(min-width:767px) {
-
-    .navbar {
-        padding: 20px 0;
-        border-bottom: 0;
-        letter-spacing: 1px;
-        background: 0 0;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        transition: background .5s ease-in-out,padding .5s ease-in-out;
-    }
-
-    .top-nav-collapse {
-        padding: 0;
-        background-color: #000;
-    }
-
-    .navbar-custom.top-nav-collapse {
-        border-bottom: 1px solid rgba(255,255,255,.3);
-    }
-	
-    .brand-heading {
-        font-size: 100px;
-    }
-	
-
-    .intro-text {
-        font-size: 25px;
-    }
-
-
-}
-@media (max-width:768px) {
-	
-	.team.boxed-grey {
-		margin-bottom: 30px;
-	}
-	
-	.boxed-grey {
-		margin-bottom: 30px;
-	}
-
-	
-}
-
-@media (max-width:480px) {
-
-	.navbar-custom .nav.navbar-nav {
-    background-color: rgba(255,255,255,.4);
-	}
-	
-	.navbar.navbar-custom.navbar-fixed-top {
-		margin-bottom: 30px;
-	}
-	
-	.tp-banner-container {
-		padding-top:40px;
-	}
-
-	.page-scroll a.btn-circle {
-		width: 40px;
-		height: 40px;
-		margin-top: 10px;
-		padding: 7px 0;
-		border: 2px solid #fff;
-		border-radius: 50%;
-		font-size: 20px;
-	}
-	
 }
