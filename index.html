@@ -30,13 +30,17 @@
 		for (var ii = 1; ii < N-1; ii++)
 		{
 	        var allElem = allRows[ii].split(",");
-		    var row = table.insertRow();
-		    var cell = row.insertCell();
-		    cell.innerHTML = parseInt(ii);
-		    var cell = row.insertCell();
-		    cell.innerHTML = allElem[0].substring(1,allElem[0].length-1);
-		    var cell = row.insertCell();
-		    cell.innerHTML = parseInt(allElem[1]);
+	        // console.log(allElem[1]);
+	        if (parseInt(allElem[1])>=5)
+	        {
+			    var row = table.insertRow();
+			    var cell = row.insertCell();
+			    cell.innerHTML = parseInt(ii);
+			    var cell = row.insertCell();
+			    cell.innerHTML = allElem[0].substring(1,allElem[0].length-1);
+			    var cell = row.insertCell();
+			    cell.innerHTML = parseInt(allElem[1]);
+			}
 		}
 	}
 
@@ -281,7 +285,8 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
-          center: {lat: 47.384236, lng: 8.540092}
+          center: {lat: 47.384236, lng: 8.540092},
+          scrollwheel: false
         });
 		for (var ii = 0; ii < markers.length; ii++)
 		{
