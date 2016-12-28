@@ -32,7 +32,7 @@ to_sort.sort(reverse=True)
 with open(csv_folder + 'Ranking-Global-'+curr_date+'.csv', 'w') as csvfile:
     csvfile.write('"Name","Meetups attended"\n')
     for id in to_sort:
-        csvfile.write('"%s","%d"\n'%(currmembers[id[1]][0],currmembers[id[1]][1]))
+        csvfile.write('"%s",%d\n'%(currmembers[id[1]][0],currmembers[id[1]][1]))
 
 # Display
 print 'We are currently %d members.'%len(currmembers)
