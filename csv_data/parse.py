@@ -71,7 +71,7 @@ with open(csv_folder + 'Ranking-Year-'+curr_date+'.csv', 'w') as csvfile:
     csvfile.write('"Name","Meetups attended"\n')
     for id in to_sort:
         if id[0]>0:
-            csvfile.write('"%s","%d"\n'%(currmembers[id[1]][0],id[0]))
+            csvfile.write('"%s",%d\n'%(currmembers[id[1]][0],id[0]))
         
 # Display
 print 'There were %d members at the end of 2016.'%len(members_prev_year)

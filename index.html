@@ -21,9 +21,9 @@
 
 	<script type="text/javascript">
 
-	function fill_table(data)
+	function fill_table(data,table_id)
 	{
-		var table = document.getElementById("displayTable");
+		var table = document.getElementById(table_id);
         var allRows = data.split(/\r?\n|\r/);
         var N = allRows.length;
         
@@ -31,7 +31,7 @@
 		{
 	        var allElem = allRows[ii].split(",");
 	        // console.log(allElem[1]);
-	        if (parseInt(allElem[1])>=5)
+	        if (parseInt(allElem[1])>=1)
 	        {
 			    var row = table.insertRow();
 			    var cell = row.insertCell();
@@ -44,7 +44,7 @@
 		}
 	}
 
-	function fill_table_from_CSV(file)
+	function fill_table_from_CSV(file,table_id)
 	{
 	    var rawFile = new XMLHttpRequest();
 	    rawFile.open("GET", file, true);
@@ -54,23 +54,28 @@
 	        {
 	            if(rawFile.status === 200 || rawFile.status == 0)
 	            {
-	                fill_table(rawFile.responseText)
+	                fill_table(rawFile.responseText,table_id)
 	            }
 	        }
 	    }
 	    rawFile.send(null);
 	}
 
-	function loadTable(date)
+	function loadTable(date,table_id)
 	{
 		// Show the updated date
 		date_parts = date.split('-')
 		var d = new Date("20"+date_parts[2], parseInt(date_parts[0])-1, date_parts[1])
-		document.getElementById("dateupdated").innerHTML = d.toDateString();
-
+		document.getElementById("dateupdated"+table_id).innerHTML = d.toDateString();
 
 		// Read CSV and fill in the table
-		fill_table_from_CSV("csv_data/Ranking-Global-"+date+".csv")	
+		fill_table_from_CSV("csv_data/Ranking-"+table_id+"-"+date+".csv","displayTable"+table_id)	
+	}
+
+	function loadAllTables(date)
+	{
+		loadTable(date,"Global")
+		loadTable(date,"Year")
 	}
 
 
@@ -85,7 +90,7 @@
     </style>
 </head>
 
-<body id="page-top" data-spy="scroll" onload="loadTable('01-01-17')">
+<body id="page-top" data-spy="scroll" onload="loadAllTables('01-01-17')">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
@@ -222,27 +227,7 @@
 					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
 					<div class="section-heading">
 					<h2>Hall of Fame 2017</h2>
-					In 2017 we will start the hall of fame from scratch, everyone will be at 0!
-					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Section: table -->
-
-	<!-- Section: table -->
-    <section id="table" class="home-section text-center">
-		<div class="heading-about">
-			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
-					<div class="section-heading">
-					<h2>Hall of Fame</h2>
-					Our most committed members (Updated <span id=dateupdated></span>)
+					Our most committed members in 2017 (Updated <span id=dateupdatedYear></span>)
 					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
 					</div>
 					</div>
@@ -258,7 +243,45 @@
 		</div>
         <div class="row">
         <center>
-            <table id="displayTable" style="text-align: center">
+            <table id="displayTableYear" style="text-align: center">
+			  <tr>
+			    <th style="text-align: center">Ranking Position</th>
+			    <th style="text-align: center;padding-right: 15px;padding-left: 15px">Meetup Username</th> 
+			    <th style="text-align: center">Runs Attended</th>
+			  </tr>
+			</table>
+		</center>
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: table -->
+
+	<!-- Section: table -->
+    <section id="table" class="home-section text-center">
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
+					<div class="section-heading">
+					<h2>Hall of Fame</h2>
+					Our most global committed members (Updated <span id=dateupdatedGlobal></span>)
+					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+        <center>
+            <table id="displayTableGlobal" style="text-align: center">
 			  <tr>
 			    <th style="text-align: center">Ranking Position</th>
 			    <th style="text-align: center">Meetup Username</th> 
@@ -283,7 +306,7 @@
 						</a>
 					</div>
 					</div>
-					<p>&copy;Copyright 2016 - Zürich Happy Runners. All rights reserved.</p>
+					<p>&copy;Copyright 2017 - Zürich Happy Runners. All rights reserved.</p>
 				</div>
 			</div>	
 		</div>
