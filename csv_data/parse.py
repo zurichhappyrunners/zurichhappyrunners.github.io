@@ -1,7 +1,7 @@
 import csv
 
 # Parameters
-curr_date = '01-07-17'
+curr_date = '01-10-17'
 csv_folder = '/Users/jpont/Workspace/zurichhappyrunners/csv_data/'
 sel_fields = ["Name", "Member ID", "Meetups attended"]
 
