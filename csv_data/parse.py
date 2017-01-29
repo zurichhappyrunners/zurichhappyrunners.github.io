@@ -1,18 +1,37 @@
 import csv
 import time
-import sys
-
+import sys, os
+import re
 
 
 # Parameters
 if (len(sys.argv)>1):
-	curr_date = sys.argv[1];
+    curr_date = sys.argv[1];
 else:
-	curr_date = time.strftime("%m-%d-%y");
+    curr_date = time.strftime("%m-%d-%y");
 
+download_folder = '/Users/jpont/Downloads/'
 csv_folder = '/Users/jpont/Workspace/zurichhappyrunners/csv_data/'
 sel_fields = ["Name", "Member ID", "Meetups attended"]
+html_file = os.path.dirname(os.path.realpath(__file__))+"/../index.html"
 
+## Move the file
+os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+
+## Change the HTML
+with open(html_file) as infile:
+    html_str = infile.read()
+
+match = re.search(r'\d{2}-\d{2}-\d{2}', html_str)
+old_date = str(match.group())
+
+html_str = html_str.replace(old_date, curr_date)
+
+print "Updating ranking from " + old_date + " to " + curr_date
+with open(html_file, 'w') as outfile:
+    outfile.write(html_str)
+        
+         
 ## ******** Get the global ranking ********
 # Open the current file
 with open(csv_folder + 'Zurich-Happy-Runners_Member_List_on_'+curr_date+'.xls', 'rb') as csvfile:
