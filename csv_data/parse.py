@@ -1,7 +1,15 @@
 import csv
+import time
+import sys
+
+
 
 # Parameters
-curr_date = '01-29-17'
+if (len(sys.argv)>1):
+	curr_date = sys.argv[1];
+else:
+	curr_date = time.strftime("%m-%d-%y");
+
 csv_folder = '/Users/jpont/Workspace/zurichhappyrunners/csv_data/'
 sel_fields = ["Name", "Member ID", "Meetups attended"]
 
