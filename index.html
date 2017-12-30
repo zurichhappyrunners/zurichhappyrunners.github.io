@@ -21,12 +21,21 @@
 
 	<script type="text/javascript">
 
+    var active_table;
+    var update_date;
+
 	function fill_table(data,table_id)
 	{
 		var table = document.getElementById(table_id);
+
+		// Empty table (delete all rows except first one)
+        var tableRows = table.getElementsByTagName('tr');
+        for (var x=tableRows.length-1; x>0; x--) {
+            table.deleteRow(1);
+        }
         var allRows = data.split(/\r?\n|\r/);
         var N = allRows.length;
-        
+
 		for (var ii = 1; ii < N-1; ii++)
 		{
 	        var allElem = allRows[ii].split(",");
@@ -54,30 +63,54 @@
 	        {
 	            if(rawFile.status === 200 || rawFile.status == 0)
 	            {
-	                fill_table(rawFile.responseText,table_id)
+	                fill_table(rawFile.responseText, table_id)
 	            }
 	        }
-	    }
+	    };
 	    rawFile.send(null);
 	}
 
-	function loadTable(date,table_id)
+	function loadTable(table_id, upd_date)
 	{
-		// Show the updated date
-		date_parts = date.split('-')
-		var d = new Date("20"+date_parts[2], parseInt(date_parts[0])-1, date_parts[1])
-		document.getElementById("dateupdated"+table_id).innerHTML = d.toDateString();
-
 		// Read CSV and fill in the table
-		fill_table_from_CSV("csv_data/Ranking-"+table_id+"-"+date+".csv","displayTable"+table_id)	
+		fill_table_from_CSV("csv_data/Ranking-"+table_id+"-"+upd_date+".csv", "displayTable");
 	}
+
 
 	function loadAllTables(date)
 	{
-		loadTable(date,"Global")
-		loadTable(date,"Year")
+	    active_table = '2017';
+        update_date = date;
+
+        // Format and display the updated date
+		date_parts = update_date.split('-');
+		var d = new Date("20"+date_parts[2], parseInt(date_parts[0])-1, date_parts[1]);
+		document.getElementById('dateupdated').innerHTML = d.toDateString();
+
+        // Style button
+        document.getElementById("button_"+active_table).style = "color: #f8f8f8; background-color: #666;";
+
+        // Load data
+		loadTable(active_table, update_date);
 	}
 
+	function click_func(year, last_update)
+    {
+        if (active_table != year) {
+            // Update table
+            if (last_update)
+                loadTable(year, last_update);
+            else
+                loadTable(year, update_date);
+
+            // Change button style
+            document.getElementById("button_"+active_table).style = "";
+            document.getElementById("button_"+year).style = "color: #f8f8f8; background-color: #666;";
+
+            // Update variable
+            active_table = year;
+        }
+    }
 
 	</script>
 
@@ -87,10 +120,27 @@
         height: 600px;
         width: 100%;
        }
+
+		.button {
+            background-color: #f8f8f8; /* Gray */
+            color: #666;
+            border: none;
+            padding: 15px 32px;
+            margin: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .button:hover{
+            background-color: #AAA; /* Gray */
+            color: #f8f8f8;
+        }
     </style>
 </head>
 
-<body id="page-top" data-spy="scroll" onload="loadAllTables('12-28-17')">
+<body id="page-top" data-spy="scroll" onload="loadAllTables('12-30-17')">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
@@ -218,81 +268,41 @@
 	<!-- Section: map -->
 
 
-
-	<section id="table2" class="home-section text-center">
-		<div class="heading-about">
+    <section id="hallfame" class="home-section text-center">
+        <div class="heading-about">
 			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
-					<div class="section-heading">
-					<h2>Hall of Fame 2017</h2>
-					Our most committed members in 2017 (Updated <span id=dateupdatedYear></span>)
-					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="container">
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-        <div class="row">
-        <center>
-            <table id="displayTableYear" style="text-align: center">
-			  <tr>
-			    <th style="text-align: center">Ranking Position</th>
-			    <th style="text-align: center;padding-right: 15px;padding-left: 15px">Meetup Username</th> 
-			    <th style="text-align: center">Runs Attended</th>
-			  </tr>
-			</table>
-		</center>
-        </div>		
-		</div>
-	</section>
-	<!-- /Section: table -->
+                <!--Title-->
+                <div class="section-heading">
+                <h2>Hall of Fame</h2>
+                    Our most committed members get a special spot in this hall of fame. Come regularly to climb positions!<br> (Updated <span id=dateupdated></span>)
+                </div>
 
-	<!-- Section: table -->
-    <section id="table" class="home-section text-center">
-		<div class="heading-about">
-			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
-					<div class="section-heading">
-					<h2>Hall of Fame</h2>
-					Our most global committed members (Updated <span id=dateupdatedGlobal></span>)
-					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="container">
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-        <div class="row">
-        <center>
-            <table id="displayTableGlobal" style="text-align: center">
-			  <tr>
-			    <th style="text-align: center">Ranking Position</th>
-			    <th style="text-align: center">Meetup Username</th> 
-			    <th style="text-align: center">Runs Attended</th>
-			  </tr>
-			</table>
-		</center>
-        </div>		
-		</div>
-	</section>
-	<!-- /Section: table -->
+                <!--Buttons-->
+		    	<div class="row" style="margin-top: 20px">
+                    <button class="button" id="button_2018" onclick="click_func('2018')">2018</button>
+                    <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
+                    <button class="button" id="button_Global"  onclick="click_func('Global')" >Overall</button>
+                </div>
+
+                <!--Divider-->
+                <div class="row">
+			        <div class="col-lg-2 col-lg-offset-5">
+				        <hr class="marginbot-50">
+			        </div>
+                </div>
+
+				<!--Table-->
+                <table id="displayTable" style="margin-left:auto; margin-right:auto;">
+                    <tr>
+                        <th style="text-align: center">Ranking Position</th>
+                        <th style="text-align: center">Meetup Username</th>
+                        <th style="text-align: center">Runs Attended</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
 
 	<footer>
 		<div id="footer" class="container">
