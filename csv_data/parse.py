@@ -46,7 +46,7 @@ sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-# os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
@@ -86,6 +86,10 @@ years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
          '2018': {'last-before': '12-30-17', 'last-updated': curr_date}}
 
 for year in years:
+    # Only update this year
+    if years[year]['last-updated'] != curr_date:
+        continue
+
     # Open the file as of last day of previous year
     members_prev_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-before'] + '.xls')
 
