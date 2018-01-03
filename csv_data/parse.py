@@ -46,7 +46,7 @@ sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+#os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
@@ -95,10 +95,13 @@ for year in years:
     for mem in members_this_year:
         # Was him/her a member last year?
         if mem in members_prev_year:
+            # Did they come during the year?
             if members_this_year[mem][1] > members_prev_year[mem][1]:
                 to_sort.append([members_this_year[mem][1]-members_prev_year[mem][1], mem])
         else:
-            to_sort.append([members_this_year[mem][1], mem])
+            # Have they ever come?
+            if members_this_year[mem][1] > 0:
+                to_sort.append([members_this_year[mem][1], mem])
     to_sort.sort(reverse=True)
 
     # Print ranking to file
