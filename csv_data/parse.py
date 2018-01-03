@@ -61,7 +61,7 @@ old_date = str(match.group())
 html_str = html_str.replace("loadAllTables('" + old_date, "loadAllTables('" + curr_date)
 
 # Write back to HTML file
-print "Updating ranking from " + old_date + " to " + curr_date
+print "Updated " + old_date + " to " + curr_date
 with open(html_file, 'w') as outfile:
     outfile.write(html_str)
 
@@ -79,7 +79,7 @@ to_sort.sort(reverse=True)
 print_to_file('Global', curr_date, currmembers, to_sort)
 
 # Display
-print 'We are %d members currently.' % len(currmembers)
+print 'Total members: %d.' % len(currmembers)
 
 # ******** Get the years ranking ********
 years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
@@ -108,4 +108,4 @@ for year in years:
     print_to_file(year, years[year]['last-updated'], members_this_year, to_sort)
 
     # Display
-    print 'There were %d members active during %s.' % (len(to_sort), year)
+    print '%s active members: %d.' % (year, len(to_sort))
