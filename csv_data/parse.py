@@ -92,17 +92,17 @@ for year in years:
 
     # Get the year ranking
     to_sort = []
-    for mem in currmembers:
+    for mem in members_this_year:
         # Was him/her a member last year?
         if mem in members_prev_year:
-            if currmembers[mem][1] > members_prev_year[mem][1]:
-                to_sort.append([currmembers[mem][1]-members_prev_year[mem][1], mem])
+            if members_this_year[mem][1] > members_prev_year[mem][1]:
+                to_sort.append([members_this_year[mem][1]-members_prev_year[mem][1], mem])
         else:
-            to_sort.append([currmembers[mem][1], mem])
+            to_sort.append([members_this_year[mem][1], mem])
     to_sort.sort(reverse=True)
 
     # Print ranking to file
-    print_to_file(year, years[year]['last-updated'], currmembers, to_sort)
+    print_to_file(year, years[year]['last-updated'], members_this_year, to_sort)
 
     # Display
     print 'There were %d members active during %s.' % (len(to_sort), year)
