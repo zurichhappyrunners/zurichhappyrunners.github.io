@@ -58,7 +58,7 @@ match = re.search(r'\d{2}-\d{2}-\d{2}', html_str)
 old_date = str(match.group())
 
 # Replace the date string
-html_str = html_str.replace(old_date, curr_date)
+html_str = html_str.replace("loadAllTables('" + old_date, "loadAllTables('" + curr_date)
 
 # Write back to HTML file
 print "Updating ranking from " + old_date + " to " + curr_date
@@ -86,12 +86,9 @@ years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
          '2018': {'last-before': '12-30-17', 'last-updated': curr_date}}
 
 for year in years:
-    # Only update this year
-    if years[year]['last-updated'] != curr_date:
-        continue
-
     # Open the file as of last day of previous year
     members_prev_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-before'] + '.xls')
+    members_this_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-updated'] + '.xls')
 
     # Get the year ranking
     to_sort = []
@@ -108,4 +105,4 @@ for year in years:
     print_to_file(year, years[year]['last-updated'], currmembers, to_sort)
 
     # Display
-    print 'There were %d members active during %s.' % (len(members_prev_year), year)
+    print 'There were %d members active during %s.' % (len(to_sort), year)
