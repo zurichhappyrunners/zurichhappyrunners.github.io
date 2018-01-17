@@ -46,7 +46,7 @@ sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-#os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
