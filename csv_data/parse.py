@@ -39,14 +39,14 @@ else:
     curr_date = time.strftime("%m-%d-%y")
 
 # Global variables
-download_folder = '/Users/jpont/Downloads/'
-root_folder = '/Users/jpont/Workspace/zurichhappyrunners/'
+download_folder = '/Users/jponttuset/Downloads/'
+root_folder = '/Users/jponttuset/Workspace/zurichhappyrunners.github.io/'
 csv_folder = root_folder + 'csv_data/'
 sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+#os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
