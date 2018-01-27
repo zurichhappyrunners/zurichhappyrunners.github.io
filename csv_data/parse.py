@@ -57,7 +57,7 @@ sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-#os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
@@ -112,8 +112,8 @@ for year in years:
 
         # Is in the compensation list?
         comp = 0
-        if name in compensation:
-            comp = comp + compensation[name]
+        # if name in compensation:
+        #     comp = comp + compensation[name]
 
         # Was him/her a member last year?
         if mem in members_prev_year:
