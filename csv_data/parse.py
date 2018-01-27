@@ -8,21 +8,32 @@ import re
 def lut_members_from_csv(csv_file):
     with open(csv_file, 'rb') as csvfile:
         csvreader = csv.reader(csvfile, delimiter='\t')
-
+        
         # Get the column IDs we're interested in
         field_ids = []
         firstrow = csvreader.next()
         for field in sel_fields:
             field_ids.append(firstrow.index(field))
-
+        
         # Create LUT
         currmembers = dict()
         for row in csvreader:
             if len(row) > 0:
                 currmembers[row[field_ids[1]]] = [row[field_ids[0]], int(float(row[field_ids[2]]))]
-
+    
     return currmembers
 
+def get_compensation(csv_file):
+    with open(csv_file, 'rb') as csvfile:
+        csvreader = csv.reader(csvfile, delimiter='\t')
+        
+        # Create LUT
+        members = dict()
+        for row in csvreader:
+            if len(row) > 0:
+                members[row[0]] = int(float(row[1]))
+    
+    return members
 
 def print_to_file(type, date, members, ids):
     with open(csv_folder + 'Ranking-'+type+'-'+date+'.csv', 'w') as csvfile:
@@ -46,7 +57,7 @@ sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+#os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
@@ -90,18 +101,29 @@ for year in years:
     members_prev_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-before'] + '.xls')
     members_this_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-updated'] + '.xls')
 
+    # Get the manual compensation for no shows and the missed day
+    compensation = get_compensation(csv_folder+'Compensation_'+year+'.csv')
+
     # Get the year ranking
     to_sort = []
     for mem in members_this_year:
+    	name = members_this_year[mem][0]
+    	times = members_this_year[mem][1]
+
+        # Is in the compensation list?
+        comp = 0
+        if name in compensation:
+            comp = comp + compensation[name]
+
         # Was him/her a member last year?
         if mem in members_prev_year:
             # Did they come during the year?
-            if members_this_year[mem][1] > members_prev_year[mem][1]:
-                to_sort.append([members_this_year[mem][1]-members_prev_year[mem][1], mem])
+            if (times+comp) > members_prev_year[mem][1]:
+                to_sort.append([times+comp-members_prev_year[mem][1], mem])
         else:
             # Have they ever come?
-            if members_this_year[mem][1] > 0:
-                to_sort.append([members_this_year[mem][1], mem])
+            if times+comp > 0:
+                to_sort.append([times+comp, mem])
     to_sort.sort(reverse=True)
 
     # Print ranking to file
