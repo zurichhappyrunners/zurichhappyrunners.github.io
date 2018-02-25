@@ -51,7 +51,7 @@ else:
 
 # Global variables
 download_folder = '/Users/jponttuset/Downloads/'
-root_folder = '/Users/jponttuset/Workspace/zurichhappyrunners.github.io/'
+root_folder = '/Users/jponttuset/Workspace/Webs/zurichhappyrunners.github.io/'
 csv_folder = root_folder + 'csv_data/'
 sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'

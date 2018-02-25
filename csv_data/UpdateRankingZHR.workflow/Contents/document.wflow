@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>cd /Users/jponttuset/Workspace/zurichhappyrunners.github.io/csv_data;
+					<string>cd /Users/jponttuset/Workspace/Webs/zurichhappyrunners.github.io/csv_data;
 python parse.py</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -467,14 +467,14 @@ python parse.py</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>3301A7ED-580A-427D-A53B-F417F5EF6019</key>
+		<key>43687B6F-6553-4C7C-8DE3-9CD5F334CAE3</key>
 		<dict>
 			<key>from</key>
 			<string>6C134ED5-A3A7-4A35-B06C-5F165B16EEDD - 6C134ED5-A3A7-4A35-B06C-5F165B16EEDD</string>
 			<key>to</key>
 			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
 		</dict>
-		<key>F2F8A4ED-B3C9-4967-8C0C-AB6FF4476252</key>
+		<key>D534D41C-F5AD-4FBB-87DD-409A4956D5AD</key>
 		<dict>
 			<key>from</key>
 			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
