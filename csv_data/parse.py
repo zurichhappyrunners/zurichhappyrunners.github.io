@@ -47,7 +47,7 @@ def print_to_file(type, date, members, ids):
 if len(sys.argv) > 1:
     curr_date = sys.argv[1]
 else:
-    curr_date = time.strftime("%m-%d-%y")
+    curr_date = time.strftime("%Y-%m-%d")
 
 # Global variables
 download_folder = '/Users/jponttuset/Downloads/'
