@@ -74,23 +74,24 @@
 	{
 		// Read CSV and fill in the table
 		fill_table_from_CSV("csv_data/Ranking-"+table_id+"-"+upd_date+".csv", "displayTable");
+    console.log("csv_data/Ranking-"+table_id+"-"+upd_date+".csv")
 	}
 
 
 	function loadAllTables(date)
 	{
-	    active_table = '2018';
-        update_date = date;
+    active_table = '2018';
+    update_date = date;   
 
-        // Format and display the updated date
+    // Format and display the updated date
 		date_parts = update_date.split('-');
-		var d = new Date("20"+date_parts[2], parseInt(date_parts[0])-1, date_parts[1]);
+		var d = new Date(date_parts[0], parseInt(date_parts[1])-1, date_parts[2]);
 		document.getElementById('dateupdated').innerHTML = d.toDateString();
 
-        // Style button
-        document.getElementById("button_"+active_table).style = "color: #f8f8f8; background-color: #666;";
+    // Style button
+    document.getElementById("button_"+active_table).style = "color: #f8f8f8; background-color: #666;";
 
-        // Load data
+    // Load data
 		loadTable(active_table, update_date);
 	}
 
@@ -140,7 +141,7 @@
     </style>
 </head>
 
-<body id="page-top" data-spy="scroll" onload="loadAllTables('2018-05-04')">
+<body id="page-top" data-spy="scroll" onload="loadAllTables('2018-05-16')">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
