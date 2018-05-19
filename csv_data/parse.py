@@ -65,7 +65,7 @@ with open(html_file) as infile:
     html_str = infile.read()
 
 # Look for the old date
-match = re.search(r'\d{2}-\d{2}-\d{2}', html_str)
+match = re.search(r'\d{4}-\d{2}-\d{2}', html_str)
 old_date = str(match.group())
 
 # Replace the date string
