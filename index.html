@@ -14,115 +14,105 @@
 
     <!-- Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="css/animate.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet"/>
     <!-- Squad theme CSS -->
     <link href="css/style.css" rel="stylesheet">
-	<link href="color/default.css" rel="stylesheet">
+    <link href="color/default.css" rel="stylesheet">
 
-	<script type="text/javascript">
+    <script type="text/javascript">
 
-    var active_table;
-    var update_date;
+        var active_table;
+        var update_date;
 
-	function fill_table(data,table_id)
-	{
-		var table = document.getElementById(table_id);
+        function fill_table(data, table_id) {
+            var table = document.getElementById(table_id);
 
-		// Empty table (delete all rows except first one)
-        var tableRows = table.getElementsByTagName('tr');
-        for (var x=tableRows.length-1; x>0; x--) {
-            table.deleteRow(1);
+            // Empty table (delete all rows except first one)
+            var tableRows = table.getElementsByTagName('tr');
+            for (var x = tableRows.length - 1; x > 0; x--) {
+                table.deleteRow(1);
+            }
+            var allRows = data.split(/\r?\n|\r/);
+            var N = allRows.length;
+
+            for (var ii = 1; ii < N - 1; ii++) {
+                var allElem = allRows[ii].split(",");
+                // console.log(allElem[1]);
+                if (parseInt(allElem[1]) >= 1) {
+                    var row = table.insertRow();
+                    var cell = row.insertCell();
+                    cell.innerHTML = parseInt(ii);
+                    var cell = row.insertCell();
+                    cell.innerHTML = allElem[0].substring(1, allElem[0].length - 1);
+                    var cell = row.insertCell();
+                    cell.innerHTML = parseInt(allElem[1]);
+                }
+            }
         }
-        var allRows = data.split(/\r?\n|\r/);
-        var N = allRows.length;
 
-		for (var ii = 1; ii < N-1; ii++)
-		{
-	        var allElem = allRows[ii].split(",");
-	        // console.log(allElem[1]);
-	        if (parseInt(allElem[1])>=1)
-	        {
-			    var row = table.insertRow();
-			    var cell = row.insertCell();
-			    cell.innerHTML = parseInt(ii);
-			    var cell = row.insertCell();
-			    cell.innerHTML = allElem[0].substring(1,allElem[0].length-1);
-			    var cell = row.insertCell();
-			    cell.innerHTML = parseInt(allElem[1]);
-			}
-		}
-	}
-
-	function fill_table_from_CSV(file,table_id)
-	{
-	    var rawFile = new XMLHttpRequest();
-	    rawFile.open("GET", file, true);
-	    rawFile.onreadystatechange = function ()
-	    {
-	        if(rawFile.readyState === 4)
-	        {
-	            if(rawFile.status === 200 || rawFile.status == 0)
-	            {
-	                fill_table(rawFile.responseText, table_id)
-	            }
-	        }
-	    };
-	    rawFile.send(null);
-	}
-
-	function loadTable(table_id, upd_date)
-	{
-		// Read CSV and fill in the table
-		fill_table_from_CSV("csv_data/Ranking-"+table_id+"-"+upd_date+".csv", "displayTable");
-    console.log("csv_data/Ranking-"+table_id+"-"+upd_date+".csv")
-	}
-
-
-	function loadAllTables(date)
-	{
-    active_table = '2018';
-    update_date = date;   
-
-    // Format and display the updated date
-		date_parts = update_date.split('-');
-		var d = new Date(date_parts[0], parseInt(date_parts[1])-1, date_parts[2]);
-		document.getElementById('dateupdated').innerHTML = d.toDateString();
-
-    // Style button
-    document.getElementById("button_"+active_table).style = "color: #f8f8f8; background-color: #666;";
-
-    // Load data
-		loadTable(active_table, update_date);
-	}
-
-	function click_func(year, last_update)
-    {
-        if (active_table != year) {
-            // Update table
-            if (last_update)
-                loadTable(year, last_update);
-            else
-                loadTable(year, update_date);
-
-            // Change button style
-            document.getElementById("button_"+active_table).style = "";
-            document.getElementById("button_"+year).style = "color: #f8f8f8; background-color: #666;";
-
-            // Update variable
-            active_table = year;
+        function fill_table_from_CSV(file, table_id) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        fill_table(rawFile.responseText, table_id)
+                    }
+                }
+            };
+            rawFile.send(null);
         }
-    }
 
-	</script>
+        function loadTable(table_id, upd_date) {
+            // Read CSV and fill in the table
+            fill_table_from_CSV("csv_data/Ranking-" + table_id + "-" + upd_date + ".csv", "displayTable");
+            console.log("csv_data/Ranking-" + table_id + "-" + upd_date + ".csv")
+        }
+
+
+        function loadAllTables(date) {
+            active_table = '2018';
+            update_date = date;
+
+            // Format and display the updated date
+            date_parts = update_date.split('-');
+            var d = new Date(date_parts[0], parseInt(date_parts[1]) - 1, date_parts[2]);
+            document.getElementById('dateupdated').innerHTML = d.toDateString();
+
+            // Style button
+            document.getElementById("button_" + active_table).style = "color: #f8f8f8; background-color: #666;";
+
+            // Load data
+            loadTable(active_table, update_date);
+        }
+
+        function click_func(year, last_update) {
+            if (active_table != year) {
+                // Update table
+                if (last_update)
+                    loadTable(year, last_update);
+                else
+                    loadTable(year, update_date);
+
+                // Change button style
+                document.getElementById("button_" + active_table).style = "";
+                document.getElementById("button_" + year).style = "color: #f8f8f8; background-color: #666;";
+
+                // Update variable
+                active_table = year;
+            }
+        }
+
+    </script>
 
 
     <style>
-       #map {
-        height: 600px;
-        width: 100%;
-       }
+        #map {
+            height: 600px;
+            width: 100%;
+        }
 
-		.button {
+        .button {
             background-color: #f8f8f8; /* Gray */
             color: #666;
             border: none;
@@ -134,7 +124,7 @@
             font-size: 16px;
         }
 
-        .button:hover{
+        .button:hover {
             background-color: #AAA; /* Gray */
             color: #f8f8f8;
         }
@@ -142,228 +132,230 @@
 </head>
 
 <body id="page-top" data-spy="scroll" onload="loadAllTables('2018-08-22')">
-	<!-- Preloader -->
-	<div id="preloader">
-	  <div id="load"></div>
-	</div>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="load"></div>
+</div>
 
-	<!-- Section: intro -->
-    <section id="intro" class="intro" style="overflow:scroll">
-		<div class="slogan">
-			<img style="width: 90%;height:auto; margin-bottom: 20px" src="img/zhr/BannerWeb.png" alt="" />
-			<h4 style="margin-left:10%;margin-right:10%">WE ARE A GROUP OF FRIENDLY RUNNERS OF ALL LEVELS WHO GATHER FOR FUN</h4>
-		</div>
-		<div class="page-scroll">
-			<a href="#about" class="btn btn-circle">
-				<i style="padding-bottom:20px" class="fa fa-angle-double-down animated"></i>
-			</a>
-		</div>
-    </section>
-	<!-- /Section: intro -->
+<!-- Section: intro -->
+<section id="intro" class="intro" style="overflow:scroll">
+    <div class="slogan">
+        <img style="width: 90%;height:auto; margin-bottom: 20px" src="img/zhr/BannerWeb.png" alt=""/>
+        <h4 style="margin-left:10%;margin-right:10%">WE ARE A GROUP OF FRIENDLY RUNNERS OF ALL LEVELS WHO GATHER FOR
+            FUN</h4>
+    </div>
+    <div class="page-scroll">
+        <a href="#about" class="btn btn-circle">
+            <i style="padding-bottom:20px" class="fa fa-angle-double-down animated"></i>
+        </a>
+    </div>
+</section>
+<!-- /Section: intro -->
 
 
+<!-- Section: about -->
+<section id="about" class="home-section text-center">
+    <div class="heading-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown" data-wow-delay="0.4s">
+                        <div class="section-heading">
+                            <h2>Organizer Team</h2>
+                            <!-- <i class="fa fa-2x fa-angle-down"></i> -->
 
-
-	<!-- Section: about -->
-    <section id="about" class="home-section text-center">
-		<div class="heading-about">
-			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow bounceInDown" data-wow-delay="0.4s">
-					<div class="section-heading">
-					<h2>Organizer Team</h2>
-					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
-
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="container">
-
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-        <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="0.2s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Jordi</h5>
-                        <p class="subtitle">Give me trails!</p>
-                        <div class="avatar"><img src="img/team/Jordi.png" alt="" class="img-responsive img-circle" /></div>
+                        </div>
                     </div>
                 </div>
-				</div>
-            </div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="0.5s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Mireia</h5>
-                        <p class="subtitle">Orienteering is fun!</p>
-                        <div class="avatar"><img src="img/team/Mireia.png" alt="" class="img-responsive img-circle" /></div>
-                    </div>
-                </div>
-				</div>
-            </div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="0.8s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Tijana</h5>
-                        <p class="subtitle">Bike, ski, run,...</p>
-                        <div class="avatar"><img src="img/team/Tijana.png" alt="" class="img-responsive img-circle" /></div>
-                    </div>
-                </div>
-				</div>
-            </div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="1s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Alex</h5>
-                        <p class="subtitle">Let's do some abs!</p>
-                        <div class="avatar"><img src="img/team/Alex.jpeg" alt="" class="img-responsive img-circle" /></div>
-                    </div>
-                </div>
-				</div>
-            </div>
-        </div>		
-		</div>
-	</section>
-	<!-- /Section: about -->
-
-
-
-	<!-- Section: map -->
-    <section class="home-section text-center bg-gray">
-		<div class="heading-about">
-			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
-					<div class="section-heading">
-					<h2>Where do we Meet?</h2>
-					Usual locations around Zürich where we start our runs
-					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
-					</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2 col-lg-offset-5">
-					<hr class="marginbot-50">
-				</div>
-			</div>
-		</div>
-    	<div id="map"></div>
-	</section>
-	<!-- Section: map -->
-
-
-    <section id="hallfame" class="home-section text-center">
-        <div class="heading-about">
-			<div class="container">
-                <!--Title-->
-                <div class="section-heading">
-                <h2>Hall of Fame</h2>
-                    Our most committed members get a special spot in this hall of fame. Come regularly to climb positions!<br> (Updated <span id=dateupdated></span>)
-                </div>
-
-                <!--Buttons-->
-		    	<div class="row" style="margin-top: 20px">
-                    <button class="button" id="button_2018" onclick="click_func('2018')">2018</button>
-                    <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
-                    <button class="button" id="button_Global"  onclick="click_func('Global')" >Overall</button>
-                </div>
-
-                <!--Divider-->
-                <div class="row">
-			        <div class="col-lg-2 col-lg-offset-5">
-				        <hr class="marginbot-50">
-			        </div>
-                </div>
-
-				<!--Table-->
-                <table id="displayTable" style="margin-left:auto; margin-right:auto;">
-                    <tr>
-                        <th style="text-align: center">Ranking Position</th>
-                        <th style="text-align: center">Meetup Username</th>
-                        <th style="text-align: center">Runs Attended</th>
-                    </tr>
-                </table>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <hr class="marginbot-50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="wow bounceInUp" data-wow-delay="0.2s">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <h5>Jordi</h5>
+                            <p class="subtitle">Give me trails!</p>
+                            <div class="avatar"><img src="img/team/Jordi.png" alt="" class="img-responsive img-circle"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="wow bounceInUp" data-wow-delay="0.5s">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <h5>Mireia</h5>
+                            <p class="subtitle">Orienteering is fun!</p>
+                            <div class="avatar"><img src="img/team/Mireia.png" alt=""
+                                                     class="img-responsive img-circle"/></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="wow bounceInUp" data-wow-delay="0.8s">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <h5>Tijana</h5>
+                            <p class="subtitle">Bike, ski, run,...</p>
+                            <div class="avatar"><img src="img/team/Tijana.png" alt=""
+                                                     class="img-responsive img-circle"/></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <div class="wow bounceInUp" data-wow-delay="1s">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <h5>Alex</h5>
+                            <p class="subtitle">Let's do some abs!</p>
+                            <div class="avatar"><img src="img/team/Alex.jpeg" alt="" class="img-responsive img-circle"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Section: about -->
 
 
-	<footer>
-		<div id="footer" class="container">
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-				    <p>You can find everything about us in <a style="color: #FFFFFF;" href="http://www.meetup.com/Zurich-Happy-Runners/" target="_blank">Meetup</a></p>
-					<div class="wow shake" data-wow-delay="0.4s">
-					<div class="page-scroll marginbot-30">
-						<a href="#intro" id="totop" class="btn btn-circle">
-							<i class="fa fa-angle-double-up animated"></i>
-						</a>
-					</div>
-					</div>
-					<p>&copy;Copyright 2017 - Zürich Happy Runners. All rights reserved.</p>
-				</div>
-			</div>	
-		</div>
-	</footer>
+<!-- Section: map -->
+<section class="home-section text-center bg-gray">
+    <div class="heading-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
+                    <div class="section-heading">
+                        <h2>Where do we Meet?</h2>
+                        Usual locations around Zürich where we start our runs
+                        <!-- <i class="fa fa-2x fa-angle-down"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <hr class="marginbot-50">
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+</section>
+<!-- Section: map -->
 
 
+<section id="hallfame" class="home-section text-center">
+    <div class="heading-about">
+        <div class="container">
+            <!--Title-->
+            <div class="section-heading">
+                <h2>Hall of Fame</h2>
+                Our most committed members get a special spot in this hall of fame. Come regularly to climb
+                positions!<br> (Updated <span id=dateupdated></span>)
+            </div>
+
+            <!--Buttons-->
+            <div class="row" style="margin-top: 20px">
+                <button class="button" id="button_2018" onclick="click_func('2018')">2018</button>
+                <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
+                <button class="button" id="button_Global" onclick="click_func('Global')">Overall</button>
+            </div>
+
+            <!--Divider-->
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-5">
+                    <hr class="marginbot-50">
+                </div>
+            </div>
+
+            <!--Table-->
+            <table id="displayTable" style="margin-left:auto; margin-right:auto;">
+                <tr>
+                    <th style="text-align: center">Ranking Position</th>
+                    <th style="text-align: center">Meetup Username</th>
+                    <th style="text-align: center">Runs Attended</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
 
 
-	<script>
+<footer>
+    <div id="footer" class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <p>You can find everything about us in <a style="color: #FFFFFF;"
+                                                          href="http://www.meetup.com/Zurich-Happy-Runners/"
+                                                          target="_blank">Meetup</a></p>
+                <div class="wow shake" data-wow-delay="0.4s">
+                    <div class="page-scroll marginbot-30">
+                        <a href="#intro" id="totop" class="btn btn-circle">
+                            <i class="fa fa-angle-double-up animated"></i>
+                        </a>
+                    </div>
+                </div>
+                <p>&copy;Copyright 2017 - Zürich Happy Runners. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-	var markers = [{lat: 47.411571, lng: 8.544611},
-	               {lat: 47.357295, lng: 8.522394},
-	               {lat: 47.376827, lng: 8.546548},
-	               {lat: 47.378096, lng: 8.539996},
-	               {lat: 47.399398, lng: 8.492994},
-	               {lat: 47.397780, lng: 8.542004}]
 
-      function initMap() {
+<script>
+
+    var markers = [{lat: 47.411571, lng: 8.544611},
+        {lat: 47.357295, lng: 8.522394},
+        {lat: 47.376827, lng: 8.546548},
+        {lat: 47.378096, lng: 8.539996},
+        {lat: 47.399398, lng: 8.492994},
+        {lat: 47.397780, lng: 8.542004}]
+
+    function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 47.384236, lng: 8.540092},
-          scrollwheel: false
+            zoom: 13,
+            center: {lat: 47.384236, lng: 8.540092},
+            scrollwheel: false
         });
-		for (var ii = 0; ii < markers.length; ii++)
-		{
-	        new google.maps.Marker({
-    	      position: markers[ii],
-        	  map: map
-        	});
-	    }
-      }
-    </script>
+        for (var ii = 0; ii < markers.length; ii++) {
+            new google.maps.Marker({
+                position: markers[ii],
+                map: map
+            });
+        }
+    }
+</script>
 
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjMpHw_ti_9Sl2CWYZ3erNR-26FxEu74c&callback=initMap">
-    </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjMpHw_ti_9Sl2CWYZ3erNR-26FxEu74c&callback=initMap">
+</script>
 
 
-    <!-- Core JavaScript Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>	
-	<script src="js/jquery.scrollTo.js"></script>
-	<script src="js/wow.min.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="js/custom.js"></script>
+<!-- Core JavaScript Files -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.scrollTo.js"></script>
+<script src="js/wow.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/custom.js"></script>
 
 </body>
 
