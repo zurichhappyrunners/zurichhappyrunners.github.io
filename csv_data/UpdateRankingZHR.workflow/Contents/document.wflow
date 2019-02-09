@@ -467,14 +467,14 @@ python parse.py</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>05F760AC-D90E-482D-A63E-7971DDAB661D</key>
+		<key>2EBCAB3A-051B-4FB0-8AB2-6D6B5F80DDDF</key>
 		<dict>
 			<key>from</key>
 			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
 			<key>to</key>
 			<string>1E8E8A42-E856-4DB0-A729-BC29DCD266EF - 1E8E8A42-E856-4DB0-A729-BC29DCD266EF</string>
 		</dict>
-		<key>5B5CA832-111C-476F-95D1-D787FAE53D74</key>
+		<key>2F21CA27-2179-44C5-9B4F-14F16EC2DCFE</key>
 		<dict>
 			<key>from</key>
 			<string>6C134ED5-A3A7-4A35-B06C-5F165B16EEDD - 6C134ED5-A3A7-4A35-B06C-5F165B16EEDD</string>
