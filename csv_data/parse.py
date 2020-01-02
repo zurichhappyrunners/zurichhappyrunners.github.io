@@ -84,7 +84,8 @@ print 'Total members: %d.' % len(currmembers)
 # ******** Get the years ranking ********
 years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
          '2018': {'last-before': '12-30-17', 'last-updated': '2018-12-29'},
-         '2019': {'last-before': '2018-12-29', 'last-updated': curr_date}}
+         '2019': {'last-before': '2018-12-29', 'last-updated': '2019-12-31'},
+         '2020': {'last-before': '2019-12-31', 'last-updated': curr_date}}
 
 for year in sorted(years):
     # Open the file as of last day of previous year
