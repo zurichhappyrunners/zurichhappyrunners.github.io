@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.42</string>
+	<string>512</string>
 	<key>AMApplicationVersion</key>
-	<string>2.9</string>
+	<string>2.10</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -124,9 +124,9 @@ python parse.py</string>
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<string></string>
+						<false/>
 						<key>name</key>
-						<string>source</string>
+						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -137,9 +137,9 @@ python parse.py</string>
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<false/>
+						<string></string>
 						<key>name</key>
-						<string>CheckedForUserDefaultShell</string>
+						<string>source</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -287,7 +287,7 @@ python parse.py</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:289.000000</string>
+				<string>309.000000:287.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -391,9 +391,9 @@ python parse.py</string>
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<string></string>
+						<string>Cancel</string>
 						<key>name</key>
-						<string>questionText</string>
+						<string>negativeTitle</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -443,9 +443,9 @@ python parse.py</string>
 					<key>4</key>
 					<dict>
 						<key>default value</key>
-						<string>Cancel</string>
+						<string></string>
 						<key>name</key>
-						<string>negativeTitle</string>
+						<string>questionText</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -457,7 +457,7 @@ python parse.py</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:485.000000</string>
+				<string>309.000000:483.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -467,14 +467,14 @@ python parse.py</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>8C1D9B89-F948-4B9B-B886-16571CF01392</key>
+		<key>AA84B1E7-AE73-4B16-8237-414906354F9F</key>
 		<dict>
 			<key>from</key>
 			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
 			<key>to</key>
 			<string>1E8E8A42-E856-4DB0-A729-BC29DCD266EF - 1E8E8A42-E856-4DB0-A729-BC29DCD266EF</string>
 		</dict>
-		<key>A30B7A38-98E6-4577-A7A8-34921AB82423</key>
+		<key>EE1C88E9-A212-4081-B8B4-4AFBFE6BFD16</key>
 		<dict>
 			<key>from</key>
 			<string>6C134ED5-A3A7-4A35-B06C-5F165B16EEDD - 6C134ED5-A3A7-4A35-B06C-5F165B16EEDD</string>
