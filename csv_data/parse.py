@@ -6,12 +6,12 @@ import re
 
 
 def lut_members_from_csv(csv_file):
-    with open(csv_file, 'rb') as csvfile:
+    with open(csv_file, 'r') as csvfile:
         csvreader = csv.reader(csvfile, delimiter='\t')
         
         # Get the column IDs we're interested in
         field_ids = []
-        firstrow = csvreader.next()
+        firstrow = next(csvreader)
         for field in sel_fields:
             field_ids.append(firstrow.index(field))
         
@@ -46,7 +46,7 @@ sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+# os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
 
 # ******* Update the HTML *******
 # Read the HTML
@@ -61,7 +61,7 @@ old_date = str(match.group())
 html_str = html_str.replace("loadAllTables('" + old_date, "loadAllTables('" + curr_date)
 
 # Write back to HTML file
-print "Updated " + old_date + " to " + curr_date
+print("Updated " + old_date + " to " + curr_date)
 with open(html_file, 'w') as outfile:
     outfile.write(html_str)
 
@@ -79,7 +79,7 @@ to_sort.sort(reverse=True)
 print_to_file('Global', curr_date, currmembers, to_sort)
 
 # Display
-print 'Total members: %d.' % len(currmembers)
+print('Total members: %d.' % len(currmembers))
 
 # ******** Get the years ranking ********
 years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
@@ -97,8 +97,8 @@ for year in sorted(years):
     # Get the year ranking
     to_sort = []
     for mem in members_this_year:
-    	name = members_this_year[mem][0]
-    	times = members_this_year[mem][1]
+        name = members_this_year[mem][0]
+        times = members_this_year[mem][1]
 
         # Was him/her a member last year?
         if mem in members_prev_year:
@@ -115,4 +115,4 @@ for year in sorted(years):
     print_to_file(year, years[year]['last-updated'], members_this_year, to_sort)
 
     # Display
-    print '%s active members: %d.' % (year, len(to_sort))
+    print('%s active members: %d.' % (year, len(to_sort)))
