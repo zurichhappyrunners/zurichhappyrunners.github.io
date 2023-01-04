@@ -87,7 +87,8 @@ years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
          '2019': {'last-before': '2018-12-29', 'last-updated': '2019-12-31'},
          '2020': {'last-before': '2019-12-31', 'last-updated': '2020-10-23'},
          '2021': {'last-before': '2020-10-23', 'last-updated': '2021-12-27'},
-         '2022': {'last-before': '2021-12-27', 'last-updated': curr_date}}
+         '2022': {'last-before': '2021-12-27', 'last-updated': '2022-12-31'},
+         '2023': {'last-before': '2022-12-31', 'last-updated': curr_date}}
 
 for year in sorted(years):
     # Open the file as of last day of previous year

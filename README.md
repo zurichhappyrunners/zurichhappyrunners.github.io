@@ -1,2 +1,2 @@
-# zhr
-Temporal hosting for the Zürich Happy Runners page
+# Zürich Happy Runners web page
+Zürich Happy Runners web page
