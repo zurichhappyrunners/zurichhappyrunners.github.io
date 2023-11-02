@@ -5,6 +5,11 @@ import os
 import re
 
 
+DUPLICATED_MEMBERS = {
+    '384470221': '400085235',
+    '287490683': '359129150'
+}
+
 def lut_members_from_csv(csv_file):
     with open(csv_file, 'r') as csvfile:
         csvreader = csv.reader(csvfile, delimiter='\t')
@@ -19,7 +24,17 @@ def lut_members_from_csv(csv_file):
         currmembers = dict()
         for row in csvreader:
             if len(row) > 0:
-                currmembers[row[field_ids[1]]] = [row[field_ids[0]], int(float(row[field_ids[2]]))]
+                name = row[field_ids[0]]
+                member_id = row[field_ids[1]]
+                times = int(float(row[field_ids[2]]))
+                if member_id in DUPLICATED_MEMBERS:
+                    final_member_id = DUPLICATED_MEMBERS[member_id]
+                else:
+                    final_member_id = member_id
+                if final_member_id in currmembers:
+                    currmembers[final_member_id][1] += times
+                else:
+                    currmembers[final_member_id] = [name, times]
     
     return currmembers
 
