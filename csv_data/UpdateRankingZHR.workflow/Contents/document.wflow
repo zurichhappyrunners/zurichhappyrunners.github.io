@@ -467,19 +467,19 @@ python3 parse.py</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>2A7F15AE-D8A4-477D-9844-CDCFC7212901</key>
-		<dict>
-			<key>from</key>
-			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
-			<key>to</key>
-			<string>1E8E8A42-E856-4DB0-A729-BC29DCD266EF - 1E8E8A42-E856-4DB0-A729-BC29DCD266EF</string>
-		</dict>
-		<key>FB880904-E4F4-408B-BB25-5E121F3AA2EC</key>
+		<key>157D4BD8-2FCB-4B6E-8DF9-65DA6ABBA4B9</key>
 		<dict>
 			<key>from</key>
 			<string>6C134ED5-A3A7-4A35-B06C-5F165B16EEDD - 6C134ED5-A3A7-4A35-B06C-5F165B16EEDD</string>
 			<key>to</key>
 			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
+		</dict>
+		<key>C3A3B210-6F43-4E66-A4E6-C5F8375D9E56</key>
+		<dict>
+			<key>from</key>
+			<string>59DBDE24-6567-43A6-8E83-93568CD8C49D - 59DBDE24-6567-43A6-8E83-93568CD8C49D</string>
+			<key>to</key>
+			<string>1E8E8A42-E856-4DB0-A729-BC29DCD266EF - 1E8E8A42-E856-4DB0-A729-BC29DCD266EF</string>
 		</dict>
 	</dict>
 	<key>variables</key>
