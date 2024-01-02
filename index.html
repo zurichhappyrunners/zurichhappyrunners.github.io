@@ -72,7 +72,7 @@
 
 
         function loadAllTables(date) {
-            active_table = '2023';
+            active_table = '2024';
             update_date = date;
 
             // Format and display the updated date
@@ -132,7 +132,7 @@
     </style>
 </head>
 
-<body id="page-top" data-spy="scroll" onload="loadAllTables('2023-12-28')">
+<body id="page-top" data-spy="scroll" onload="loadAllTables('2024-01-02')">
 <!-- Preloader -->
 <div id="preloader">
     <div id="load"></div>
@@ -153,6 +153,47 @@
 </section>
 <!-- /Section: intro -->
 
+<section id="hallfame" class="home-section text-center">
+    <div class="heading-about">
+        <div class="container">
+            <!--Title-->
+            <div class="section-heading">
+                <h2>Hall of Fame</h2>
+                Our most committed members get a special spot in this hall of fame. Come regularly to climb
+                positions!<br> (Updated <span id=dateupdated></span>)
+            </div>
+
+            <!--Buttons-->
+            <div class="row" style="margin-top: 20px">
+                <button class="button" id="button_2024" onclick="click_func('2024')">2024</button>
+                <button class="button" id="button_2023" onclick="click_func('2022','2023-12-28')">2023</button>
+                <button class="button" id="button_2022" onclick="click_func('2022','2022-12-31')">2022</button>
+                <button class="button" id="button_2021" onclick="click_func('2021','2021-12-27')">2021</button>
+                <button class="button" id="button_2020" onclick="click_func('2020','2020-10-23')">2020</button>
+                <button class="button" id="button_2019" onclick="click_func('2019','2019-12-31')">2019</button>
+                <button class="button" id="button_2018" onclick="click_func('2018','2018-12-29')">2018</button>
+                <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
+                <button class="button" id="button_Global" onclick="click_func('Global')">Overall</button>
+            </div>
+
+            <!--Divider-->
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-5">
+                    <hr class="marginbot-50">
+                </div>
+            </div>
+
+            <!--Table-->
+            <table id="displayTable" style="margin-left:auto; margin-right:auto;">
+                <tr>
+                    <th style="text-align: center">Ranking Position</th>
+                    <th style="text-align: center">Meetup Username</th>
+                    <th style="text-align: center">Runs Attended</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
 
 <!-- Section: about -->
 <section id="about" class="home-section text-center">
@@ -260,48 +301,6 @@
 </section>
 <!-- Section: map -->
 
-
-<section id="hallfame" class="home-section text-center">
-    <div class="heading-about">
-        <div class="container">
-            <!--Title-->
-            <div class="section-heading">
-                <h2>Hall of Fame</h2>
-                Our most committed members get a special spot in this hall of fame. Come regularly to climb
-                positions!<br> (Updated <span id=dateupdated></span>)
-            </div>
-
-            <!--Buttons-->
-            <div class="row" style="margin-top: 20px">
-                <button class="button" id="button_2023" onclick="click_func('2023')">2023</button>
-                <button class="button" id="button_2022" onclick="click_func('2022','2022-12-31')">2022</button>
-                <button class="button" id="button_2021" onclick="click_func('2021','2021-12-27')">2021</button>
-                <button class="button" id="button_2020" onclick="click_func('2020','2020-10-23')">2020</button>
-                <button class="button" id="button_2019" onclick="click_func('2019','2019-12-31')">2019</button>
-                <button class="button" id="button_2018" onclick="click_func('2018','2018-12-29')">2018</button>
-                <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
-                <button class="button" id="button_Global" onclick="click_func('Global')">Overall</button>
-            </div>
-
-            <!--Divider-->
-            <div class="row">
-                <div class="col-lg-2 col-lg-offset-5">
-                    <hr class="marginbot-50">
-                </div>
-            </div>
-
-            <!--Table-->
-            <table id="displayTable" style="margin-left:auto; margin-right:auto;">
-                <tr>
-                    <th style="text-align: center">Ranking Position</th>
-                    <th style="text-align: center">Meetup Username</th>
-                    <th style="text-align: center">Runs Attended</th>
-                </tr>
-            </table>
-        </div>
-    </div>
-</section>
-
 <section id="media" class="home-section text-center bg-gray">
     <div class="heading-about">
         <div class="container">
@@ -333,7 +332,7 @@
                         </a>
                     </div>
                 </div>
-                <p>&copy;Copyright 2023 - Zürich Happy Runners. All rights reserved.</p>
+                <p>&copy;Copyright 2024 - Zürich Happy Runners. All rights reserved.</p>
             </div>
         </div>
     </div>
