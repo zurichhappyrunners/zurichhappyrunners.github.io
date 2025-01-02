@@ -16,7 +16,7 @@
 "Ivan Gonzalez",169
 "Nuria",139
 "Vasyl Dizhak",138
-"Kevis",135
+"Kevis",136
 "Hugo O.",129
 "OJ Skjelten",128
 "Laura Galimberti",122
@@ -32,11 +32,11 @@
 "Guillaume E",96
 "Mircea",96
 "Ana F",95
+"Bevan R",95
 "Andrea",92
-"Bevan R",91
+"Andrea A",88
 "Jonathann",87
 "Conor Marsh",87
-"Andrea A",87
 "Charlotte Beglinger",85
 "Chris Jones",85
 "David Menetrat",85
@@ -44,20 +44,20 @@
 "Matthew Shipman",81
 "Jasmine",77
 "Mary McGlohon",77
+"Tom Q",74
 "Laci",72
-"Tom Q",72
 "Adrian Harrington",70
 "Gianni",70
 "Alex",69
 "Vanessa",68
 "Francesca",67
-"Halldor",65
+"Halldor",66
 "Hannah Shipman",64
+"Steve Obrist",64
+"Yulia",64
 "Rachel",63
 "Cristian",63
 "Amy Yang",63
-"Steve Obrist",63
-"Yulia",63
 "Abel",62
 "Chris",61
 "Lisa",61
@@ -65,23 +65,24 @@
 "Michele Tucci",59
 "Pauline Hernandez",58
 "Séamus",57
+"Mathieu",55
 "Heather",54
-"Mathieu",53
 "Roddy Cunningham",51
 "Ivan",51
 "Magda",51
 "Rui Zhu",49
 "Riccardo Dal Bello",47
 "Laurie",46
+"Martta V",46
 "Irene Uboldi",45
 "Sylvain",45
 "Lauren Snella Lieber",45
-"Martta V",45
 "Zuz",44
 "Mark Collier",43
 "Beba",43
 "Jonas",43
 "Eva",42
+"Hywel",41
 "Alina",41
 "Emelie",40
 "Viktor Reinok",40
@@ -89,29 +90,28 @@
 "Laura",39
 "Pedro",39
 "Sandrine",38
+"Dario Martin",38
 "Sergio Ps",37
-"Hywel",37
 "Hannah",37
 "Marloes",36
 "Sam K-R",35
+"Hauke",35
 "KFNW",35
 "Charlie McClelland",35
 "Petr Bauch",35
 "Rachel",35
 "Jonathan Hayes",35
-"Dario Martin",35
 "Daniela",34
 "Giovanna Scotolati",34
 "Lorenza Garau Paganella",33
-"Hauke",33
 "Eleanor",33
 "Sylvain Reboux",33
+"Aynsley",33
 "George P.",32
 "elena",32
 "Lluis CS",32
 "Andreas",31
 "Karl",30
-"Aynsley",30
 "Laura",29
 "Andrei Dan",29
 "David Yang",29
@@ -120,24 +120,25 @@
 "Elmar",28
 "Réka Molnár",27
 "Beata",27
+"Mary",27
+"Wendy",27
 "Giacomo Sala",26
 "Joy",26
-"Mary",26
-"Wendy",26
+"Ben",26
 "Scott",25
 "Nico Neuenhofer",25
 "Eric",25
 "Monica",25
-"Ben",25
 "Laura",24
 "Marko",24
+"Dan B",24
+"Corinne",24
 "Laura",24
 "Christian ",24
 "Daniel Hulme",23
 "Mette Emsholm Kjær",23
 "Miguel Angel",23
-"Dan B",23
-"Corinne",23
+"Ian",23
 "Marius Dumitran",23
 "James Stenning",22
 "Violette Pepper",22
@@ -145,12 +146,12 @@
 "Kenneth",22
 "Taylor Nelson",22
 "James Evans",21
+"Angela Stamatie",21
 "Dominic R.",21
 "Marco",21
 "Louis Bliard",20
 "Aymeric",20
 "Mathieu Allemann",20
-"Angela Stamatie",20
 "Nil Schelling",20
 "Diego",20
 "Robert Flitcroft",20
@@ -158,9 +159,9 @@
 "Voy",19
 "Claire Grigglestone",19
 "David",19
-"Ian",19
 "Elise",19
 "Oliver Angelil",19
+"Kelly",19
 "Louise",19
 "Edoardo Mulattieri",19
 "Maria",18
@@ -176,12 +177,12 @@
 "Hanrong Tan",17
 "Elisabeth Karsberg",17
 "Wesley",17
-"Kelly",17
 "carien",17
 "Vadim",16
 "Nathaniel",16
 "Jörg",16
 "Ángel Lucio Pereira",16
+"Valerie",16
 "Anton",15
 "Robin B",15
 "Charlotte",15
@@ -192,9 +193,9 @@
 "Ophélie Pasquet",15
 "Jozef Mokry",15
 "corinna",15
-"Valerie",15
 "Adam D",14
 "Jason Qiu",14
+"Josep",14
 "Celine Vogt",14
 "Irena Valertova",14
 "Peter",14
@@ -206,7 +207,6 @@
 "Robert S",13
 "Simon Maréchal",13
 "Emma",13
-"Josep",13
 "Fabian S",13
 "Ander",13
 "Brian Maiorano",13
@@ -216,30 +216,32 @@
 "Daniel",13
 "Arno Blom",13
 "Rebeka Bálint",13
+"Guilhem",13
 "DeborahL",13
 "Ruth Gamero Cruz",13
 "Pat Bourne",13
 "Charizze",12
 "Monika",12
 "Tim",12
+"Trevor LeValley",12
 "Malte Baader",12
 "Claire",12
 "Stefano",12
 "Karol",12
 "Laurens Vanweddingen",12
 "Edu",12
-"Guilhem",12
 "Gabriele",11
 "Silvio",11
 "Kostiantyn",11
 "Predrag",11
-"Trevor LeValley",11
 "Georgia",11
 "E",11
 "Pietro Maurizio",11
 "Andrew Alexander",11
 "Pascal Lieblich",11
 "Tobi",11
+"Dominika",11
+"Lorenzo",11
 "Francis Garmston",11
 "Alex Wild",10
 "Jerry",10
@@ -254,11 +256,11 @@
 "Miranda",10
 "Caterina Mrose",10
 "Igor",10
+"Rita",10
 "Petra",10
 "Simona Miljanovic",10
 "Jennifer Schmitt",10
 "Xavier",10
-"Lorenzo",10
 "Cristina Isai",10
 "Joao A",10
 "Ludek Cigler",10
@@ -269,14 +271,14 @@
 "Isabella D'Angelo",9
 "Thomas Langerak",9
 "Ylva",9
-"Rita",9
 "Mariusz",9
 "Renzo",9
 "Aleksander (irycio)",9
 "Lukas Möller",9
 "Imola",9
 "Matthew Rahtz",9
-"Dominika",9
+"Nathan",9
+"Stephen Endacott",9
 "Erin O'Grady",8
 "Eleanor",8
 "Lucía Llaneza",8
@@ -296,7 +298,7 @@
 "MabrahamsNYC",8
 "Randy",8
 "Ramo",8
-"Nathan",8
+"Thomas",8
 "Juan Venturello",8
 "Javi Dieguez",8
 "Alina",7
@@ -319,12 +321,12 @@
 "Joan Roigé Riera",7
 "Randy",7
 "Maximilian Bommers",7
+"Laurent Giacri",7
 "Sergio Sanabria",7
-"Thomas",7
+"Nathalie",7
 "Tobi Britt",7
 "Dragana",7
 "Melanie",7
-"Stephen Endacott",7
 "Damian",6
 "Natalia Podvoyskaya",6
 "Katarina Vulić",6
@@ -349,12 +351,13 @@
 "Niamh Mac",6
 "Pierre",6
 "Giuseppe Pagliaro",6
-"Laurent Giacri",6
+"Viktor",6
 "Alejandro",6
 "Karin So",6
 "Marc Sch",6
 "Benjamin Doggwiler",6
 "Yens",6
+"Paul Buttitta",5
 "Jen ",5
 "Flossie Brown",5
 "Julian",5
@@ -389,7 +392,6 @@
 "Ghislaine",5
 "Gordon David",5
 "Daniela",5
-"Nathalie",5
 "Javi",5
 "Hany",5
 "Britta  Studer",5
@@ -398,7 +400,7 @@
 "Adriana Lombard",5
 "Brina ",5
 "claudia",4
-"Paul Buttitta",4
+"Alicia Kaestli",4
 "Dragos",4
 "Prachi Joshi",4
 "Rajshikhar Gupta",4
@@ -415,6 +417,7 @@
 "Cédric Chambru",4
 "Agnes V. Emaus",4
 "Jenny",4
+"Rory",4
 "Daisy",4
 "Patrick Hough",4
 "Agnes",4
@@ -426,19 +429,22 @@
 "Christopher Brown",4
 "Emily Ashby",4
 "xabier",4
+"Max",4
 "Adrian Dragomir",4
 "Cristian",4
 "Melanie",4
 "Miguel A.",4
 "Viviana Petrescu",4
+"Gregor Sampson",4
 "Fabio Evangelisti",4
 "Andi",4
 "Cris",4
-"Viktor",4
 "Michèle",4
 "Nicolas Perony",4
 "VictoriaN",4
+"Rio",4
 "Guy",4
+"Christine",4
 "Marcin",4
 "Natalia G.",4
 "Quim",4
@@ -449,7 +455,7 @@
 "Jas",3
 "Zoltan Sziladi",3
 "Matthias",3
-"Alicia Kaestli",3
+"diegomgg",3
 "Dan Tonks",3
 "Torsten",3
 "Maite Robles",3
@@ -483,12 +489,12 @@
 "Sebastian",3
 "Tamara ",3
 "Alan Kinnaird",3
-"Rory",3
 "Piotr Bojka",3
 "Federico Garzarelli",3
 "Manuel Carro",3
 "Prince",3
 "Mike Poyser",3
+"Iana CH",3
 "Arturo Fernandez",3
 "Matthew Kinsbrook",3
 "Daphne Sap",3
@@ -498,7 +504,6 @@
 "Bernd",3
 "James Patterson",3
 "Lisa Loft",3
-"Max",3
 "Sonja",3
 "Ricardo Peña",3
 "Derick",3
@@ -512,8 +517,8 @@
 "Fabian",3
 "Sanjeev K",3
 "Angela",3
-"Gregor Sampson",3
 "Georgi",3
+"Joel",3
 "Melanie Janaina Mafli",3
 "Kaloyan",3
 "Francesco",3
@@ -527,9 +532,10 @@
 "Alexander Hille",3
 "Keah Lonergan",3
 "Ciprian Florea",3
+"Enric Galceran",3
+"jin cao",3
 "Maggie H",3
 "Maria",3
-"Christine",3
 "Dan Farnbach",3
 "Nathaniel",3
 "Ania",3
@@ -547,7 +553,6 @@
 "Karen",2
 "Josie Biedermann",2
 "Luis Navas",2
-"diegomgg",2
 "Lucas Rocha",2
 "Jenny",2
 "Alberto Massarella",2
@@ -564,8 +569,10 @@
 "Joanna Orłowska",2
 "Anais Zouaki",2
 "Emma",2
+"Nicolas Griffiths",2
 "Daniel Strebel",2
 "Nima",2
+"Jérémie",2
 "Atanas",2
 "Michal Mraz",2
 "Martin Pfannmöller",2
@@ -599,7 +606,6 @@
 "Tim Denecke",2
 "cecile mongredien",2
 "MARCO",2
-"Iana CH",2
 "Anca Sabau",2
 "Andy",2
 "Ana ",2
@@ -620,6 +626,7 @@
 "Emily",2
 "Rita",2
 "marroi",2
+"Simone Westerduin",2
 "Paulina",2
 "Molepo",2
 "Yuhua",2
@@ -643,15 +650,17 @@
 "Phil",2
 "Anjana",2
 "Maria",2
+"Emilia",2
 "Francesc Serra",2
-"Joel",2
 "Lil Oliver",2
 "Wiktor",2
 "Eugenio",2
 "Daniel",2
+"Daniel Darugna",2
 "Halil Özden",2
 "Laura B.",2
 "Chidambaram Annamalai",2
+"Vibeke Rohde",2
 "Andrés Sahún Gil",2
 "Rui",2
 "Michael",2
@@ -664,12 +673,9 @@
 "Ellen Batens",2
 "Tatjana",2
 "Alessandro Chiesa",2
-"Rio",2
 "Angela",2
 "Deirdre Mc Ardle(Chips)",2
 "Rui",2
-"Enric Galceran",2
-"jin cao",2
 "Scott ",2
 "Nicole Colmenares Pulido",2
 "Natalia",2
@@ -681,7 +687,9 @@
 "ChancelorMerkel",2
 "Olivier",2
 "Elaine Fukunaga",2
+"Minh",2
 "Alexander",2
+"David Lopez",2
 "Anny",2
 "Frederik Blankson-Gregaard",2
 "Pili Hu",2
@@ -734,6 +742,7 @@
 "Rahel ",1
 "Ame Lie",1
 "kevin wallington",1
+"Mel",1
 "Eden laurent ",1
 "Alex",1
 "Phillip Zywczuk",1
@@ -771,7 +780,6 @@
 "Joakim Oldeen",1
 "Sina Bartholet",1
 "Ulrich",1
-"Nicolas Griffiths",1
 "Shaip",1
 "Christofer Sjögren",1
 "Jan Heimes",1
@@ -780,7 +788,6 @@
 "Mer Mer",1
 "Mauro",1
 "Lawrence",1
-"Jérémie",1
 "Szymon",1
 "Rafael Wehrmeister ",1
 "Meytan",1
@@ -936,6 +943,7 @@
 "selma schilter",1
 "Adèle Legoupil",1
 "Sarah Mason",1
+"Rafaela Kalbermatten",1
 "Jill Dörgeloh",1
 "Paul",1
 "Sabina ",1
@@ -952,7 +960,6 @@
 "Adam Mahar",1
 "Marcel Štefko",1
 "Eva",1
-"Simone Westerduin",1
 "Joël Béla Bourgeois",1
 "Aleksandra Szewc",1
 "Xiao Svec",1
@@ -996,12 +1003,12 @@
 "Frederik",1
 "Anna Exenberger",1
 "Pedro Perez",1
+"James P",1
 "Hamza",1
 "* * * Dani",1
 "Silvie Kloučková",1
 "EnriKo Loubet",1
 "Fanny",1
-"Emilia",1
 "Pauline Poulain",1
 "Zuzanna",1
 "Daniela Herzig",1
@@ -1015,10 +1022,8 @@
 "Sylvain ",1
 "Nadia",1
 "Richard Fitzpatrick",1
-"Daniel Darugna",1
 "Ana Martinez",1
 "Simone",1
-"Vibeke Rohde",1
 "Kaitlin Butler",1
 "Andres Sanchez Colmenar",1
 "Kendra",1
@@ -1037,6 +1042,7 @@
 "Nicholas Ashby",1
 "Giulietta",1
 "Dorian",1
+"Wesley",1
 "Francesca ",1
 "Qian Hou",1
 "Mkash",1
@@ -1056,6 +1062,7 @@
 "José",1
 "Amandine",1
 "Fabio",1
+"Neil Houlsby",1
 "Susanna",1
 "Greg Luko",1
 "Subi Hubi",1
@@ -1074,10 +1081,8 @@
 "Thibaud",1
 "Erica",1
 "Christina Haupt",1
-"Minh",1
 "Kurt",1
 "Carina Rivero",1
-"David Lopez",1
 "Moss",1
 "Gianni",1
 "Valerie",1
