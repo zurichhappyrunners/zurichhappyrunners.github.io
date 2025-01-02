@@ -112,7 +112,10 @@ currmembers = lut_members_from_file(
 # Sort ids
 to_sort = []
 for mem in currmembers:
-  to_sort.append([currmembers[mem][1], mem])
+  count = currmembers[mem][1]
+  if mem in COUNT_CORRECTION:
+    count += COUNT_CORRECTION[mem]
+  to_sort.append([count, mem])
 to_sort.sort(reverse=True)
 
 # Print to file
