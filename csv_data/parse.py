@@ -3,21 +3,31 @@ import time
 import sys
 import os
 import re
+import glob
 
 
 DUPLICATED_MEMBERS = {
     '384470221': '400085235',
     '287490683': '359129150'
 }
+HEADERS_CSV = ['Name', 'Member ID', 'Events attended']
+HEADERS_XLS = ['Name', 'Member ID', 'Meetups attended']
 
-def lut_members_from_csv(csv_file):
+def lut_members_from_file(filename: str):
+    if os.path.exists(filename + '.xls'):
+        return lut_members_from_csv(filename + '.xls', delimiter='\t', headers=HEADERS_XLS)
+    if os.path.exists(filename + '.csv'):
+        return lut_members_from_csv(filename + '.csv', delimiter=',', headers=HEADERS_CSV)
+    raise FileNotFoundError(filename)
+
+def lut_members_from_csv(csv_file, delimiter, headers):
     with open(csv_file, 'r') as csvfile:
-        csvreader = csv.reader(csvfile, delimiter='\t')
+        csvreader = csv.reader(csvfile, delimiter=delimiter)
         
         # Get the column IDs we're interested in
         field_ids = []
         firstrow = next(csvreader)
-        for field in sel_fields:
+        for field in headers:
             field_ids.append(firstrow.index(field))
         
         # Create LUT
@@ -57,11 +67,14 @@ else:
 download_folder = '/Users/jponttuset/Downloads/'
 root_folder = '/Users/jponttuset/Workspace/Webs/zurichhappyrunners.github.io/'
 csv_folder = root_folder + 'csv_data/'
-sel_fields = ['Name', 'Member ID', 'Meetups attended']
 html_file = root_folder + '/index.html'
 
 # Move the file to csv folder
-os.rename(download_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls", csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".xls")
+matches = glob.glob(download_folder + 'zurich-happy-runners_*_group_members.csv')
+if matches:
+    downloaded_file = matches[0]
+    stored_file = csv_folder+"Zurich-Happy-Runners_Member_List_on_"+curr_date+".csv"
+    os.rename(downloaded_file, stored_file)
 
 # ******* Update the HTML *******
 # Read the HTML
@@ -82,7 +95,7 @@ with open(html_file, 'w') as outfile:
 
 # ******* Get the global ranking *******
 # Read the current file and create a LUT w.r.t. member ID
-currmembers = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + curr_date + '.xls')
+currmembers = lut_members_from_file(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + curr_date)
     
 # Sort ids
 to_sort = []
@@ -108,8 +121,8 @@ years = {'2017': {'last-before': '12-31-16', 'last-updated': '12-30-17'},
 
 for year in sorted(years):
     # Open the file as of last day of previous year
-    members_prev_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-before'] + '.xls')
-    members_this_year = lut_members_from_csv(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-updated'] + '.xls')
+    members_prev_year = lut_members_from_file(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-before'])
+    members_this_year = lut_members_from_file(csv_folder + 'Zurich-Happy-Runners_Member_List_on_' + years[year]['last-updated'])
 
     # Get the year ranking
     to_sort = []
