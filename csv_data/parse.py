@@ -7,6 +7,7 @@ import time
 
 
 DUPLICATED_MEMBERS = {'384470221': '400085235', '287490683': '359129150'}
+COUNT_CORRECTION = {'142487402': 2, '230655343': 3, '10931908': 1, '144593412': 6, '53535452': 1}
 HEADERS_CSV = ['Name', 'Member ID', 'Events attended']
 HEADERS_XLS = ['Name', 'Member ID', 'Meetups attended']
 
@@ -152,6 +153,9 @@ for year in sorted(years):
   for mem in members_this_year:
     name = members_this_year[mem][0]
     times = members_this_year[mem][1]
+
+    if mem in COUNT_CORRECTION and year == '2024':
+      times += COUNT_CORRECTION[mem]
 
     # Was him/her a member last year?
     if mem in members_prev_year:
