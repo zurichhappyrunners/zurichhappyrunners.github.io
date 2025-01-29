@@ -7,7 +7,7 @@ import time
 
 
 DUPLICATED_MEMBERS = {'384470221': '400085235', '287490683': '359129150'}
-COUNT_CORRECTION = {
+COUNT_CORRECTION_2024 = {
     '142487402': 2,
     '230655343': 3,
     '10931908': 1,
@@ -72,6 +72,9 @@ COUNT_CORRECTION = {
     '137388842': 64 - 63,
     '53535452': 1,
     '184254027': 4,
+}
+COUNT_CORRECTION_2025 = {
+    '199858933': 1,
 }
 HEADERS_CSV = ['Name', 'Member ID', 'Events attended']
 HEADERS_XLS = ['Name', 'Member ID', 'Meetups attended']
@@ -178,8 +181,10 @@ currmembers = lut_members_from_file(
 to_sort = []
 for mem in currmembers:
   count = currmembers[mem][1]
-  if mem in COUNT_CORRECTION:
-    count += COUNT_CORRECTION[mem]
+  if mem in COUNT_CORRECTION_2024:
+    count += COUNT_CORRECTION_2024[mem]
+  if mem in COUNT_CORRECTION_2025:
+    count += COUNT_CORRECTION_2025[mem]
   to_sort.append([count, mem])
 to_sort.sort(reverse=True)
 
@@ -222,9 +227,11 @@ for year in sorted(years):
     name = members_this_year[mem][0]
     times = members_this_year[mem][1]
 
-    if mem in COUNT_CORRECTION and year == '2024':
-      times += COUNT_CORRECTION[mem]
-
+    if mem in COUNT_CORRECTION_2024 and year == '2024':
+      times += COUNT_CORRECTION_2024[mem]
+    if mem in COUNT_CORRECTION_2025 and year == '2025':
+      times += COUNT_CORRECTION_2025[mem]
+      
     # Was him/her a member last year?
     times_prev_year = 0
     if mem in members_prev_year:
