@@ -132,7 +132,7 @@
     </style>
 </head>
 
-<body id="page-top" data-spy="scroll" onload="loadAllTables('2025-09-17')">
+<body id="page-top" data-spy="scroll" onload="loadAllTables('2025-10-01')">
 <!-- Preloader -->
 <div id="preloader">
     <div id="load"></div>
@@ -198,128 +198,6 @@
 </section>
 <!-- /Section: hallfame -->
 
-<!-- Section: about -->
-<section id="about" class="home-section text-center">
-    <div class="heading-about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="wow bounceInDown" data-wow-delay="0.4s">
-                        <div class="section-heading">
-                            <h2>Organizer Team</h2>
-                            <!-- <i class="fa fa-2x fa-angle-down"></i> -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-5">
-                <hr class="marginbot-50">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-3">
-                <div class="wow bounceInUp" data-wow-delay="0.2s">
-                    <div class="team boxed-grey">
-                        <div class="inner">
-                            <h5>Jordi</h5>
-                            <p class="subtitle">Give me trails!</p>
-                            <div class="avatar"><img src="img/team/Jordi.png" alt="" class="img-responsive img-circle"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-3">
-                <div class="wow bounceInUp" data-wow-delay="0.5s">
-                    <div class="team boxed-grey">
-                        <div class="inner">
-                            <h5>Mireia</h5>
-                            <p class="subtitle">Orienteering is fun!</p>
-                            <div class="avatar"><img src="img/team/Mireia.png" alt=""
-                                                     class="img-responsive img-circle"/></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-3">
-                <div class="wow bounceInUp" data-wow-delay="0.8s">
-                    <div class="team boxed-grey">
-                        <div class="inner">
-                            <h5>Tijana</h5>
-                            <p class="subtitle">Bike, ski, run,...</p>
-                            <div class="avatar"><img src="img/team/Tijana.png" alt=""
-                                                     class="img-responsive img-circle"/></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-3">
-                <div class="wow bounceInUp" data-wow-delay="1s">
-                    <div class="team boxed-grey">
-                        <div class="inner">
-                            <h5>Alex</h5>
-                            <p class="subtitle">Let's do some abs!</p>
-                            <div class="avatar"><img src="img/team/Alex.jpeg" alt="" class="img-responsive img-circle"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- /Section: about -->
-
-
-<!-- Section: map -->
-<section class="home-section text-center bg-gray">
-    <div class="heading-about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
-                    <div class="section-heading">
-                        <h2>Where do we Meet?</h2>
-                        Usual locations around Zürich where we start our runs
-                        <!-- <i class="fa fa-2x fa-angle-down"></i> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-5">
-                <hr class="marginbot-50">
-            </div>
-        </div>
-    </div>
-    <div id="map"></div>
-</section>
-<!-- Section: map -->
-
-<section id="media" class="home-section text-center bg-gray">
-    <div class="heading-about">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Media</h2>
-            </div>
-            <div class="media">
-                <iframe width="1280" height="720" src="https://www.youtube.com/embed/a9tSGXEknvU" frameborder="0"
-                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                <p class="acks">Thanks to <a href="http://simona.nusaybah.ch/portfolio/" target="_blank"> Simona
-                    Miljanovic </a>!</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <footer>
     <div id="footer" class="container">
@@ -342,34 +220,7 @@
 </footer>
 
 
-<script>
 
-    var markers = [{lat: 47.411571, lng: 8.544611},
-        {lat: 47.357295, lng: 8.522394},
-        {lat: 47.376827, lng: 8.546548},
-        {lat: 47.378096, lng: 8.539996},
-        {lat: 47.399398, lng: 8.492994},
-        {lat: 47.397780, lng: 8.542004}]
-
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13,
-            center: {lat: 47.384236, lng: 8.540092},
-            scrollwheel: false
-        });
-        for (var ii = 0; ii < markers.length; ii++) {
-            new google.maps.Marker({
-                position: markers[ii],
-                map: map
-            });
-        }
-    }
-</script>
-
-
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjMpHw_ti_9Sl2CWYZ3erNR-26FxEu74c&callback=initMap">
-</script>
 
 
 <!-- Core JavaScript Files -->
