@@ -137,7 +137,7 @@ else:
 
 # Global variables
 download_folder = '/Users/jponttuset/Downloads/'
-root_folder = '/Users/jponttuset/Workspace/Webs/zurichhappyrunners.github.io/'
+root_folder = '/Users/jponttuset/Workspace/zurichhappyrunners.github.io/'
 csv_folder = root_folder + 'csv_data/'
 html_file = root_folder + '/index.html'
 
