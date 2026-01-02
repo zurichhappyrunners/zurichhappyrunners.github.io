@@ -597,15 +597,15 @@ footer p {
 
 
 /* Media queries */
-@media(min-width:800px) {
+@media(min-width:500px) {
 
     #displayTable{
-        width:60%;
+        width:500px;
     }
 }
 
 
-@media(max-width:799px) {
+@media(max-width:499px) {
 
     #displayTable{
         width:100%;
