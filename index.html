@@ -36,17 +36,38 @@
             var allRows = data.split(/\r?\n|\r/);
             var N = allRows.length;
 
+            previous = -1;
+            last_rank_with_ties = 1;
             for (var ii = 1; ii < N - 1; ii++) {
                 var allElem = allRows[ii].split(",");
-                // console.log(allElem[1]);
+                // allElem = [name, num_attended]
                 if (parseInt(allElem[1]) >= 1) {
                     var row = table.insertRow();
+
+                    if (allElem[1] == previous) {
+                        rank_with_ties = last_rank_with_ties;
+                    }
+                    else {
+                        rank_with_ties = ii;
+                        last_rank_with_ties = ii;
+                    }
+
+                    // Position
                     var cell = row.insertCell();
-                    cell.innerHTML = parseInt(ii);
-                    var cell = row.insertCell();
+                    cell.innerHTML = `${ii}`;
+
+                    // Position with ties
+                    cell = row.insertCell();
+                    cell.innerHTML = `${rank_with_ties}`;
+
+                    // Name
+                    cell = row.insertCell();
                     cell.innerHTML = allElem[0].substring(1, allElem[0].length - 1);
-                    var cell = row.insertCell();
+
+                    // Runs attended
+                    cell = row.insertCell();
                     cell.innerHTML = parseInt(allElem[1]);
+                    previous = allElem[1];
                 }
             }
         }
@@ -189,7 +210,8 @@
             <!--Table-->
             <table id="displayTable" style="margin-left:auto; margin-right:auto;">
                 <tr>
-                    <th style="text-align: center">Ranking Position</th>
+                    <th style="text-align: center">Rank</th>
+                    <th style="text-align: center">Position</th>
                     <th style="text-align: center">Meetup Username</th>
                     <th style="text-align: center">Runs Attended</th>
                 </tr>
