@@ -205,7 +205,8 @@ years = {
     '2022': {'last-before': '2021-12-27', 'last-updated': '2022-12-31'},
     '2023': {'last-before': '2022-12-31', 'last-updated': '2023-12-28'},
     '2024': {'last-before': '2023-12-28', 'last-updated': '2025-01-02'},
-    '2025': {'last-before': '2025-01-02', 'last-updated': curr_date},
+    '2025': {'last-before': '2025-01-02', 'last-updated': '2025-12-29'},
+    '2026': {'last-before': '2025-12-29', 'last-updated': curr_date},
 }
 
 for year in sorted(years):
