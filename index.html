@@ -9,23 +9,20 @@
 
     <title>Zürich Happy Runners</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet"/>
-
-    <!-- Squad theme CSS -->
+    <!-- Theme CSS -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="color/default.css" rel="stylesheet">
 
     <script type="text/javascript">
 
         var active_table;
         var update_date;
 
-        function fill_table(data, table_id) {
+        function fill_table(data, table_id, is_overall) {
             var table = document.getElementById(table_id);
 
             // Empty table (delete all rows except first one)
@@ -38,10 +35,12 @@
 
             previous = -1;
             last_rank_with_ties = 1;
+            var top10_split_added = false;
             for (var ii = 1; ii < N - 1; ii++) {
                 var allElem = allRows[ii].split(",");
                 // allElem = [name, num_attended]
-                if (parseInt(allElem[1]) >= 1) {
+                var runs = parseInt(allElem[1]);
+                if (runs >= 1) {
                     var row = table.insertRow();
 
                     if (allElem[1] == previous) {
@@ -50,6 +49,15 @@
                     else {
                         rank_with_ties = ii;
                         last_rank_with_ties = ii;
+                    }
+
+                    if (is_overall) {
+                        if (previous !== -1 && Math.floor(runs / 100) < Math.floor(parseInt(previous) / 100)) {
+                            row.className = "section-divider";
+                        }
+                    } else if (!top10_split_added && rank_with_ties > 10) {
+                        row.className = "section-divider";
+                        top10_split_added = true;
                     }
 
                     // Position
@@ -66,19 +74,19 @@
 
                     // Runs attended
                     cell = row.insertCell();
-                    cell.innerHTML = parseInt(allElem[1]);
+                    cell.innerHTML = runs;
                     previous = allElem[1];
                 }
             }
         }
 
-        function fill_table_from_CSV(file, table_id) {
+        function fill_table_from_CSV(file, table_id, is_overall) {
             var rawFile = new XMLHttpRequest();
             rawFile.open("GET", file, true);
             rawFile.onreadystatechange = function () {
                 if (rawFile.readyState === 4) {
                     if (rawFile.status === 200 || rawFile.status == 0) {
-                        fill_table(rawFile.responseText, table_id)
+                        fill_table(rawFile.responseText, table_id, is_overall)
                     }
                 }
             };
@@ -87,7 +95,7 @@
 
         function loadTable(table_id, upd_date) {
             // Read CSV and fill in the table
-            fill_table_from_CSV("csv_data/Ranking-" + table_id + "-" + upd_date + ".csv", "displayTable");
+            fill_table_from_CSV("csv_data/Ranking-" + table_id + "-" + upd_date + ".csv", "displayTable", table_id === "Global");
             console.log("csv_data/Ranking-" + table_id + "-" + upd_date + ".csv")
         }
 
@@ -126,129 +134,82 @@
         }
 
     </script>
-
-
-    <style>
-        .button {
-            background-color: #f8f8f8; /* Gray */
-            color: #666;
-            border: none;
-            padding: 15px 32px;
-            margin: 10px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
-
-        .button:hover {
-            background-color: #AAA; /* Gray */
-            color: #f8f8f8;
-        }
-    </style>
 </head>
 
-<body id="page-top" data-spy="scroll" onload="loadAllTables('2026-11-20')">
-<!-- Preloader -->
-<div id="preloader">
-    <div id="load"></div>
-</div>
+<body id="page-top" onload="loadAllTables('2026-11-20')">
 
 <!-- Section: intro -->
-<section id="intro" class="intro" style="overflow:scroll">
+<section id="intro" class="intro">
     <div class="slogan">
-        <img style="width: 90%;height:auto; margin-bottom: 20px" src="img/zhr/BannerWeb.png" alt=""/>
-        <h4 style="margin-left:10%;margin-right:10%">WE ARE A GROUP OF FRIENDLY RUNNERS OF ALL LEVELS WHO GATHER FOR
-            FUN</h4>
+        <img class="banner-img" src="img/zhr/BannerWeb.png" width="1278" height="200" fetchpriority="high" alt=""/>
+        <h4>WE ARE A GROUP OF FRIENDLY RUNNERS OF ALL LEVELS WHO GATHER FOR FUN</h4>
     </div>
     <div class="page-scroll">
-        <a href="#hallfame" class="btn btn-circle">
-            <i style="padding-bottom:20px" class="fa fa-angle-double-down animated"></i>
+        <a href="#hallfame" class="btn-circle">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7.41 5.59 6 7l6 6 6-6-1.41-1.41L12 10.17 7.41 5.59zm0 6L6 13l6 6 6-6-1.41-1.41L12 16.17l-4.59-4.58z"/>
+            </svg>
         </a>
     </div>
 </section>
 <!-- /Section: intro -->
 
 <!-- Section: hallfame -->
-<section id="hallfame" class="home-section text-center">
-    <div class="heading-about">
-        <div class="container">
-            <!--Title-->
-            <div class="section-heading">
-                <h2>Hall of Fame</h2>
-                Our most committed members get a special spot in this hall of fame. Come regularly to climb
-                positions!<br> (Updated <span id=dateupdated></span>)
-            </div>
-
-            <!--Buttons-->
-            <div class="row" style="margin-top: 20px">
-                <button class="button" id="button_2026" onclick="click_func('2026')">2026</button>
-                <button class="button" id="button_2025" onclick="click_func('2025','2025-12-29')">2025</button>
-                <button class="button" id="button_2024" onclick="click_func('2024','2025-01-02')">2024</button>
-                <button class="button" id="button_2023" onclick="click_func('2023','2023-12-28')">2023</button>
-                <button class="button" id="button_2022" onclick="click_func('2022','2022-12-31')">2022</button>
-                <button class="button" id="button_2021" onclick="click_func('2021','2021-12-27')">2021</button>
-                <button class="button" id="button_2020" onclick="click_func('2020','2020-10-23')">2020</button>
-                <button class="button" id="button_2019" onclick="click_func('2019','2019-12-31')">2019</button>
-                <button class="button" id="button_2018" onclick="click_func('2018','2018-12-29')">2018</button>
-                <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
-                <button class="button" id="button_Global" onclick="click_func('Global')">Overall</button>
-            </div>
-
-            <!--Divider-->
-            <div class="row">
-                <div class="col-lg-2 col-lg-offset-5">
-                    <hr class="marginbot-50">
-                </div>
-            </div>
-
-            <!--Table-->
-            <table id="displayTable" style="margin-left:auto; margin-right:auto;">
-                <tr>
-                    <th style="text-align: center">Rank</th>
-                    <th style="text-align: center">Position</th>
-                    <th style="text-align: center">Meetup Username</th>
-                    <th style="text-align: center">Runs</th>
-                </tr>
-            </table>
+<section id="hallfame" class="home-section">
+    <div class="container">
+        <!--Title-->
+        <div class="section-heading">
+            <h2>Hall of Fame</h2>
+            Our most committed members get a special spot in this hall of fame. Come regularly to climb
+            positions!<br> (Updated <span id="dateupdated"></span>)
         </div>
+
+        <!--Buttons-->
+        <div class="button-group">
+            <button class="button" id="button_2026" onclick="click_func('2026')">2026</button>
+            <button class="button" id="button_2025" onclick="click_func('2025','2025-12-29')">2025</button>
+            <button class="button" id="button_2024" onclick="click_func('2024','2025-01-02')">2024</button>
+            <button class="button" id="button_2023" onclick="click_func('2023','2023-12-28')">2023</button>
+            <button class="button" id="button_2022" onclick="click_func('2022','2022-12-31')">2022</button>
+            <button class="button" id="button_2021" onclick="click_func('2021','2021-12-27')">2021</button>
+            <button class="button" id="button_2020" onclick="click_func('2020','2020-10-23')">2020</button>
+            <button class="button" id="button_2019" onclick="click_func('2019','2019-12-31')">2019</button>
+            <button class="button" id="button_2018" onclick="click_func('2018','2018-12-29')">2018</button>
+            <button class="button" id="button_2017" onclick="click_func('2017','12-30-17')">2017</button>
+            <button class="button" id="button_Global" onclick="click_func('Global')">Overall</button>
+        </div>
+
+        <!--Divider-->
+        <hr class="divider">
+
+        <!--Table-->
+        <table id="displayTable">
+            <tr>
+                <th>Rank</th>
+                <th>Position</th>
+                <th>Meetup Username</th>
+                <th>Runs</th>
+            </tr>
+        </table>
     </div>
 </section>
 <!-- /Section: hallfame -->
 
-
 <footer>
     <div id="footer" class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <p>You can find everything about us in <a style="color: #FFFFFF;"
-                                                          href="http://www.meetup.com/Zurich-Happy-Runners/"
-                                                          target="_blank">Meetup</a></p>
-                <div class="wow shake" data-wow-delay="0.4s">
-                    <div class="page-scroll marginbot-30">
-                        <a href="#intro" id="totop" class="btn btn-circle">
-                            <i class="fa fa-angle-double-up animated"></i>
-                        </a>
-                    </div>
-                </div>
-                <p>&copy;Copyright 2026 - Zürich Happy Runners. All rights reserved.</p>
-            </div>
+        <p>You can find everything about us in <a class="meetup-link"
+                                                  href="http://www.meetup.com/Zurich-Happy-Runners/"
+                                                  target="_blank">Meetup</a></p>
+        <div class="page-scroll">
+            <a href="#intro" id="totop" class="btn-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.41 18.41 6 17l6-6 6 6-1.41 1.41L12 13.83l-4.59 4.58zm0-6L6 11l6-6 6 6-1.41 1.41L12 7.83l-4.59 4.58z"/>
+                </svg>
+            </a>
         </div>
+        <p>&copy;Copyright 2026 - Zürich Happy Runners. All rights reserved.</p>
     </div>
 </footer>
-
-
-
-
-
-<!-- Core JavaScript Files -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.scrollTo.js"></script>
-<script src="js/wow.min.js"></script>
-<!-- Custom Theme JavaScript -->
-<script src="js/custom.js"></script>
 
 </body>
 
